@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard — WebAnalytics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+    <div class="dashboard-layout">
+
+        <!-- ── Sidebar ─────────────────────────────────────────── -->
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="sidebar-logo">
+                    <div class="logo-icon">
+                        <svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                        </svg>
+                    </div>
+                    <span class="logo-text">Web<span>Analytics</span></span>
+                </div>
+            </div>
+
+            <!-- Site selector -->
+            <div class="site-selector-wrap">
+                <div class="site-selector-label">Active Property</div>
+                <select id="site-select">
+                    <option value="">— Select a property —</option>
+                </select>
+            </div>
+
+            <!-- Nav -->
+            <nav class="sidebar-nav">
+                <div class="nav-section-label">Analytics</div>
+                <button class="nav-item active" data-page="overview">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="7" height="7" />
+                        <rect x="14" y="3" width="7" height="7" />
+                        <rect x="14" y="14" width="7" height="7" />
+                        <rect x="3" y="14" width="7" height="7" />
+                    </svg>
+                    Overview
+                </button>
+                <button class="nav-item" data-page="realtime">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                    Real-Time
+                </button>
+                <button class="nav-item" data-page="audience">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 00-3-3.87" />
+                        <path d="M16 3.13a4 4 0 010 7.75" />
+                    </svg>
+                    Audience
+                </button>
+                <button class="nav-item" data-page="acquisition">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <line x1="12" y1="20" x2="12" y2="10" />
+                        <line x1="18" y1="20" x2="18" y2="4" />
+                        <line x1="6" y1="20" x2="6" y2="16" />
+                    </svg>
+                    Acquisition
+                </button>
+                <button class="nav-item" data-page="behavior">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                    </svg>
+                    Behavior
+                </button>
+                <div class="nav-section-label">Account</div>
+                <button class="nav-item" data-page="settings">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="3" />
+                        <path
+                            d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" />
+                    </svg>
+                    Settings
+                </button>
+            </nav>
+
+            <!-- User info + logout -->
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="user-avatar" id="user-avatar">?</div>
+                    <div>
+                        <div class="user-name" id="user-name">Loading…</div>
+                        <div class="user-email" id="user-email"></div>
+                    </div>
+                </div>
+                <button id="logout-btn" class="btn btn-ghost btn-sm">
+                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
+                        <polyline points="16 17 21 12 16 7" />
+                        <line x1="21" y1="12" x2="9" y2="12" />
+                    </svg>
+                    Sign Out
+                </button>
+            </div>
+        </aside>
+
+        <!-- ── Main Area ──────────────────────────────────────── -->
+        <div class="main-area">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="topbar-left">
+                    <span class="topbar-title" id="topbar-title">Overview</span>
+                    <div class="topbar-badge" id="live-badge" style="display:none">
+                        <div class="live-dot"></div> LIVE
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <select class="date-range-select" id="date-range">
+                        <option value="7daysAgo">Last 7 days</option>
+                        <option value="14daysAgo">Last 14 days</option>
+                        <option value="30daysAgo">Last 30 days</option>
+                        <option value="90daysAgo">Last 90 days</option>
+                    </select>
+                    <button id="add-site-btn" class="btn btn-primary btn-sm">
+                        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"
+                            viewBox="0 0 24 24">
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                        Add Property
+                    </button>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <main class="content-area">
+
+                <!-- ════════════════ OVERVIEW ════════════════ -->
+                <section id="page-overview" class="page-section active">
+                    <div class="section-header">
+                        <div>
+                            <h1 class="section-title">Overview</h1>
+                            <p class="section-subtitle">Traffic summary for the selected period</p>
+                        </div>
+                    </div>
+
+                    <!-- Loading -->
+                    <div id="overview-loading"
+                        style="display:flex;align-items:center;gap:10px;padding:40px 0;color:var(--text-muted)">
+                        <div class="spinner"></div> Loading analytics…
+                    </div>
+
+                    <div id="overview-content" style="display:none">
+                        <!-- KPI Cards -->
+                        <div class="kpi-grid">
+                            <div class="kpi-card">
+                                <div class="kpi-icon indigo">
+                                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                                    </svg>
+                                </div>
+                                <div class="kpi-value" id="kpi-sessions">—</div>
+                                <div class="kpi-label">Sessions</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-icon green">
+                                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                                        <circle cx="9" cy="7" r="4" />
+                                    </svg>
+                                </div>
+                                <div class="kpi-value" id="kpi-users">—</div>
+                                <div class="kpi-label">Active Users</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-icon cyan">
+                                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2" />
+                                        <circle cx="9" cy="7" r="4" />
+                                        <line x1="19" y1="8" x2="19" y2="14" />
+                                        <line x1="22" y1="11" x2="16" y2="11" />
+                                    </svg>
+                                </div>
+                                <div class="kpi-value" id="kpi-new-users">—</div>
+                                <div class="kpi-label">New Users</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-icon yellow">
+                                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                                        <polyline points="14 2 14 8 20 8" />
+                                    </svg>
+                                </div>
+                                <div class="kpi-value" id="kpi-pageviews">—</div>
+                                <div class="kpi-label">Page Views</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-icon red">
+                                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <polyline points="7 13 12 18 17 13" />
+                                        <polyline points="7 6 12 11 17 6" />
+                                    </svg>
+                                </div>
+                                <div class="kpi-value" id="kpi-bounce">—</div>
+                                <div class="kpi-label">Bounce Rate</div>
+                            </div>
+                            <div class="kpi-card">
+                                <div class="kpi-icon purple">
+                                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <polyline points="12 6 12 12 16 14" />
+                                    </svg>
+                                </div>
+                                <div class="kpi-value" id="kpi-duration">—</div>
+                                <div class="kpi-label">Avg. Duration</div>
+                            </div>
+                        </div>
+
+                        <!-- Line chart -->
+                        <div class="chart-card">
+                            <div class="chart-card-header">
+                                <div>
+                                    <div class="chart-card-title">Sessions & Users</div>
+                                    <div class="chart-card-subtitle">Daily trend for selected period</div>
+                                </div>
+                            </div>
+                            <div class="chart-container" style="height:260px">
+                                <canvas id="overview-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ════════════════ REAL-TIME ════════════════ -->
+                <section id="page-realtime" class="page-section">
+                    <div class="section-header">
+                        <div>
+                            <h1 class="section-title">Real-Time</h1>
+                            <p class="section-subtitle">Active users on your site right now</p>
+                        </div>
+                        <div style="font-size:12px;color:var(--text-muted)">Updates every 10 seconds</div>
+                    </div>
+                    <div class="realtime-hero">
+                        <div class="realtime-count" id="rt-count">—</div>
+                        <div class="realtime-label">Active Users Right Now</div>
+                        <div class="realtime-update" id="rt-updated">Waiting for data…</div>
+                    </div>
+                    <div class="realtime-pages-grid">
+                        <div class="chart-card" style="grid-column:1/-1">
+                            <div class="chart-card-header">
+                                <div>
+                                    <div class="chart-card-title">Active Pages</div>
+                                    <div class="chart-card-subtitle">Pages with at least one active user</div>
+                                </div>
+                            </div>
+                            <div style="overflow-x:auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Page</th>
+                                            <th style="text-align:right">Active Users</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="rt-pages-list">
+                                        <tr>
+                                            <td colspan="2" class="text-muted" style="text-align:center;padding:30px">
+                                                Select a property to view live data</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ════════════════ AUDIENCE ════════════════ -->
+                <section id="page-audience" class="page-section">
+                    <div class="section-header">
+                        <div>
+                            <h1 class="section-title">Audience</h1>
+                            <p class="section-subtitle">Who is visiting your site — last 30 days</p>
+                        </div>
+                    </div>
+
+                    <div id="audience-loading"
+                        style="display:flex;align-items:center;gap:10px;padding:40px 0;color:var(--text-muted)">
+                        <div class="spinner"></div> Loading audience data…
+                    </div>
+
+                    <div id="audience-content" style="display:none">
+                        <div class="chart-grid chart-grid-3">
+                            <!-- Device donut -->
+                            <div class="chart-card">
+                                <div class="chart-card-header">
+                                    <div>
+                                        <div class="chart-card-title">Device Category</div>
+                                        <div class="chart-card-subtitle">Desktop, mobile, tablet</div>
+                                    </div>
+                                </div>
+                                <div class="chart-container" style="height:240px">
+                                    <canvas id="device-chart"></canvas>
+                                </div>
+                            </div>
+
+                            <!-- Country table -->
+                            <div class="chart-card">
+                                <div class="chart-card-header">
+                                    <div>
+                                        <div class="chart-card-title">Top Countries</div>
+                                        <div class="chart-card-subtitle">By active users (30 days)</div>
+                                    </div>
+                                </div>
+                                <div style="overflow-x:auto">
+                                    <table class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Country</th>
+                                                <th>Users</th>
+                                                <th>Sessions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="country-table-body">
+                                            <tr>
+                                                <td colspan="4" class="text-muted">Loading…</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ════════════════ ACQUISITION ════════════════ -->
+                <section id="page-acquisition" class="page-section">
+                    <div class="section-header">
+                        <div>
+                            <h1 class="section-title">Acquisition</h1>
+                            <p class="section-subtitle">How users find your website — last 30 days</p>
+                        </div>
+                    </div>
+
+                    <div id="acquisition-loading"
+                        style="display:flex;align-items:center;gap:10px;padding:40px 0;color:var(--text-muted)">
+                        <div class="spinner"></div> Loading acquisition data…
+                    </div>
+
+                    <div id="acquisition-content" style="display:none">
+                        <div class="chart-card" style="margin-bottom:16px">
+                            <div class="chart-card-header">
+                                <div>
+                                    <div class="chart-card-title">Sessions by Channel</div>
+                                    <div class="chart-card-subtitle">Default channel grouping</div>
+                                </div>
+                            </div>
+                            <div class="chart-container" style="height:260px">
+                                <canvas id="acquisition-chart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="chart-card">
+                            <div class="chart-card-header">
+                                <div class="chart-card-title">Channel Breakdown</div>
+                            </div>
+                            <div style="overflow-x:auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Channel</th>
+                                            <th>Sessions</th>
+                                            <th>Users</th>
+                                            <th>Bounce Rate</th>
+                                            <th>Conversions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="acq-table-body">
+                                        <tr>
+                                            <td colspan="5" class="text-muted">Loading…</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ════════════════ BEHAVIOR ════════════════ -->
+                <section id="page-behavior" class="page-section">
+                    <div class="section-header">
+                        <div>
+                            <h1 class="section-title">Behavior</h1>
+                            <p class="section-subtitle">What users do on your site — last 30 days</p>
+                        </div>
+                    </div>
+
+                    <div id="behavior-loading"
+                        style="display:flex;align-items:center;gap:10px;padding:40px 0;color:var(--text-muted)">
+                        <div class="spinner"></div> Loading behavior data…
+                    </div>
+
+                    <div id="behavior-content" style="display:none">
+                        <!-- Events chart -->
+                        <div class="chart-card" style="margin-bottom:16px">
+                            <div class="chart-card-header">
+                                <div>
+                                    <div class="chart-card-title">Top Events</div>
+                                    <div class="chart-card-subtitle">Event count by event name</div>
+                                </div>
+                            </div>
+                            <div class="chart-container" style="height:220px">
+                                <canvas id="events-chart"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Top pages table -->
+                        <div class="chart-card">
+                            <div class="chart-card-header">
+                                <div class="chart-card-title">Top Pages</div>
+                            </div>
+                            <div style="overflow-x:auto">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Page Path</th>
+                                            <th>Views</th>
+                                            <th>Users</th>
+                                            <th>Avg. Duration</th>
+                                            <th>Bounce Rate</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="pages-table-body">
+                                        <tr>
+                                            <td colspan="6" class="text-muted">Loading…</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ════════════════ SETTINGS ════════════════ -->
+                <section id="page-settings" class="page-section">
+                    <div class="section-header">
+                        <div>
+                            <h1 class="section-title">Settings</h1>
+                            <p class="section-subtitle">Manage your Google Analytics properties</p>
+                        </div>
+                    </div>
+
+                    <!-- Add new property -->
+                    <div class="settings-card">
+                        <div class="settings-card-title">Add GA4 Property</div>
+                        <div class="settings-card-subtitle">Enter your GA4 property ID to add a new website. You'll then
+                            connect it with Google.</div>
+                        <form id="add-website-form" class="settings-form">
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+                                <div class="form-group">
+                                    <label class="form-label" for="site-name">Display Name</label>
+                                    <input id="site-name" class="form-input" type="text" placeholder="My Website" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="site-property">
+                                        GA4 Property ID
+                                        <span style="color:var(--text-muted);font-weight:400"> (e.g. 123456789)</span>
+                                    </label>
+                                    <input id="site-property" class="form-input" type="text" placeholder="123456789"
+                                        required />
+                                </div>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary">
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"
+                                        viewBox="0 0 24 24">
+                                        <line x1="12" y1="5" x2="12" y2="19" />
+                                        <line x1="5" y1="12" x2="19" y2="12" />
+                                    </svg>
+                                    Add Property
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Property list -->
+                    <div class="settings-card">
+                        <div class="settings-card-title">Connected Properties</div>
+                        <div class="settings-card-subtitle">Connect each property with your Google account to start
+                            viewing analytics.</div>
+                        <div class="website-list" id="website-list">
+                            <div style="color:var(--text-muted);font-size:13px;text-align:center;padding:30px 0">
+                                No properties yet. Add one above.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- How to get Property ID -->
+                    <div class="settings-card" style="border-color:rgba(99,102,241,0.2);background:var(--accent-soft)">
+                        <div class="settings-card-title" style="color:var(--accent)">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24" style="display:inline;margin-right:6px">
+                                <circle cx="12" cy="12" r="10" />
+                                <line x1="12" y1="8" x2="12" y2="12" />
+                                <line x1="12" y1="16" x2="12.01" y2="16" />
+                            </svg>
+                            How to get your GA4 Property ID
+                        </div>
+                        <ol
+                            style="color:var(--text-secondary);font-size:13px;line-height:2;padding-left:18px;margin-top:8px">
+                            <li>Go to <strong style="color:var(--text-primary)">analytics.google.com</strong></li>
+                            <li>Click <strong style="color:var(--text-primary)">Admin</strong> (bottom-left gear icon)
+                            </li>
+                            <li>Under "Property", click <strong style="color:var(--text-primary)">Property
+                                    Settings</strong></li>
+                            <li>Copy the <strong style="color:var(--text-primary)">Property ID</strong> (a number like
+                                123456789)</li>
+                        </ol>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- ── Add Property Modal ─────────────────────────────────── -->
+    <div id="add-site-modal" class="modal-backdrop" style="display:none">
+        <div class="modal-box">
+            <div class="modal-title">Add GA4 Property</div>
+            <div class="modal-subtitle">You'll connect to Google Analytics after adding the property.</div>
+            <div class="auth-error" id="modal-error" style="margin-bottom:14px"></div>
+            <div class="settings-form" style="gap:14px">
+                <div class="form-group">
+                    <label class="form-label">Display Name</label>
+                    <input id="modal-site-name" class="form-input" type="text" placeholder="My Website" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label">GA4 Property ID</label>
+                    <input id="modal-property-id" class="form-input" type="text" placeholder="123456789" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="modal-cancel" class="btn btn-secondary">Cancel</button>
+                <button id="modal-submit" class="btn btn-primary">Add Property</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="/js/api.js"></script>
+    <script src="/js/charts.js"></script>
+    <script src="/js/analytics.js"></script>
+    <script>
+        // ── Dashboard bootstrap ──────────────────────────────────────
+        (async () => {
+            const user = await requireAuth();
+            if (!user) return;
+
+            // Populate user info
+            document.getElementById('user-name').textContent = user.name;
+            document.getElementById('user-email').textContent = user.email;
+            document.getElementById('user-avatar').textContent = user.name.charAt(0).toUpperCase();
+
+            // Logout
+            document.getElementById('logout-btn').addEventListener('click', async () => {
+                await api.logout();
+                window.location.href = '/';
+            });
+
+            // Date range change
+            document.getElementById('date-range').addEventListener('change', (e) => {
+                currentDateRange = e.target.value;
+                loadSection(activePage);
+            });
+
+            // ── Routing ───────────────────────────────────────────────
+            let activePage = 'overview';
+            const PAGE_TITLES = {
+                overview: 'Overview',
+                realtime: 'Real-Time',
+                audience: 'Audience',
+                acquisition: 'Acquisition',
+                behavior: 'Behavior',
+                settings: 'Settings',
+            };
+
+            function switchPage(name) {
+                if (name === activePage && name !== 'settings') return;
+
+                // Stop realtime polling when leaving
+                if (activePage === 'realtime') stopRealtime();
+
+                activePage = name;
+
+                // Update sections
+                document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+                document.getElementById(`page-${name}`).classList.add('active');
+
+                // Update nav
+                document.querySelectorAll('.nav-item').forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.page === name);
+                });
+
+                // Topbar
+                document.getElementById('topbar-title').textContent = PAGE_TITLES[name] || name;
+                document.getElementById('live-badge').style.display = name === 'realtime' ? 'flex' : 'none';
+                document.getElementById('date-range').style.display = ['overview'].includes(name) ? 'block' : 'none';
+
+                // Load data
+                if (currentSiteId) loadSection(name);
+            }
+
+            document.querySelectorAll('.nav-item[data-page]').forEach(btn => {
+                btn.addEventListener('click', () => switchPage(btn.dataset.page));
+            });
+
+            // Handle OAuth callback params
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('connected')) {
+                showToast('Google Analytics connected successfully!', 'success');
+                window.history.replaceState({}, '', '/dashboard.html');
+            }
+            if (params.get('error')) {
+                const errMap = {
+                    access_denied: 'Google access was denied.',
+                    no_refresh_token: 'No refresh token received. Try revoking access at myaccount.google.com/permissions and reconnecting.',
+                    oauth_failed: 'OAuth connection failed. Please try again.',
+                };
+                showToast(errMap[params.get('error')] || 'Connection error.', 'error');
+                window.history.replaceState({}, '', '/dashboard.html');
+            }
+
+            // ── Load websites ─────────────────────────────────────────
+            async function loadWebsites() {
+                const sites = await api.getWebsites();
+                const select = document.getElementById('site-select');
+
+                // Populate dropdown
+                select.innerHTML = '<option value="">— Select a property —</option>' +
+                    sites.map(s => `<option value="${s.id}">${escapeHtml(s.display_name)} (${s.ga_property_id})</option>`).join('');
+
+                // Auto-select if there's one connected
+                const connected = sites.find(s => s.connected);
+                if (connected) {
+                    select.value = connected.id;
+                    currentSiteId = connected.id;
+                    loadSection(activePage);
+                }
+
+                // Render settings list
+                const listEl = document.getElementById('website-list');
+                if (!sites.length) {
+                    listEl.innerHTML = '<div style="color:var(--text-muted);font-size:13px;text-align:center;padding:30px 0">No properties yet. Add one above.</div>';
+                    return;
+                }
+                listEl.innerHTML = sites.map(s => `
+      <div class="website-item">
+        <div class="website-item-info">
+          <div class="website-item-name">${escapeHtml(s.display_name)}</div>
+          <div class="website-item-prop">Property ID: ${escapeHtml(s.ga_property_id)}${s.google_email ? ' · ' + escapeHtml(s.google_email) : ''}</div>
+        </div>
+        <div class="website-item-actions">
+          ${s.connected
+                        ? `<span class="btn-connect connected"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Connected</span>`
+                        : `<a href="/api/google/connect?siteId=${s.id}" class="btn-connect">
+                 <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A11.0 11.0 0 001 12c0 1.77.42 3.44 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                 Connect Google
+               </a>`
+                    }
+          <button class="btn btn-danger btn-sm" onclick="deleteWebsite(${s.id})">Remove</button>
+        </div>
+      </div>
+    `).join('');
+            }
+
+            // Site selector change
+            document.getElementById('site-select').addEventListener('change', (e) => {
+                currentSiteId = e.target.value || null;
+                if (currentSiteId) loadSection(activePage);
+            });
+
+            // ── Add website (inline form in Settings) ─────────────────
+            document.getElementById('add-website-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                await addWebsite(
+                    document.getElementById('site-name').value,
+                    document.getElementById('site-property').value
+                );
+                document.getElementById('site-name').value = '';
+                document.getElementById('site-property').value = '';
+            });
+
+            // ── Add Property modal (topbar button) ───────────────────
+            const modal = document.getElementById('add-site-modal');
+            document.getElementById('add-site-btn').addEventListener('click', () => {
+                modal.style.display = 'flex';
+            });
+            document.getElementById('modal-cancel').addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) modal.style.display = 'none';
+            });
+            document.getElementById('modal-submit').addEventListener('click', async () => {
+                const name = document.getElementById('modal-site-name').value;
+                const prop = document.getElementById('modal-property-id').value;
+                if (!prop) {
+                    document.getElementById('modal-error').textContent = 'Property ID is required';
+                    document.getElementById('modal-error').classList.add('show');
+                    return;
+                }
+                await addWebsite(name, prop);
+                modal.style.display = 'none';
+            });
+
+            async function addWebsite(name, propertyId) {
+                try {
+                    await api.addWebsite({ display_name: name || 'My Website', ga_property_id: propertyId });
+                    showToast('Property added! Connect Google Analytics in Settings.', 'success');
+                    await loadWebsites();
+                    switchPage('settings');
+                } catch (err) {
+                    showToast(err.message, 'error');
+                }
+            }
+
+            window.deleteWebsite = async (id) => {
+                if (!confirm('Remove this property?')) return;
+                try {
+                    await api.deleteWebsite(id);
+                    if (currentSiteId == id) { currentSiteId = null; }
+                    await loadWebsites();
+                    showToast('Property removed.', 'info');
+                } catch (err) {
+                    showToast(err.message, 'error');
+                }
+            };
+
+            function escapeHtml(str) {
+                return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+            }
+
+            // Init
+            await loadWebsites();
+            switchPage(params.get('connected') ? 'settings' : 'overview');
+        })();
+    </script>
+</body>
+
+</html>

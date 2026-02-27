@@ -1,0 +1,15 @@
+# ── Secrets ────────────────────────────────────────────────────────────────────
+backend/.env
+
+# ── Runtime database (not source code) ────────────────────────────────────────
+backend/db/analytics.db
+
+# ── Dependencies ───────────────────────────────────────────────────────────────
+node_modules/
+backend/node_modules/
+
+# ── OS & editor junk ───────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.log
+.vscode/

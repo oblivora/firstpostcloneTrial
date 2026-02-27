@@ -1,0 +1,104 @@
+# WebAnalytics SaaS — Build Walkthrough
+
+## What Was Built
+
+A fully functional, deployable Google Analytics-style SaaS platform with:
+- **Landing page** — hero, feature cards, CTAs
+- **Auth** — register + login with bcrypt passwords and JWT httpOnly cookies
+- **Dashboard** — 5 separate analytics sections driven by real GA4 Data API
+- **Google OAuth2** — "Connect Google Analytics" consent flow, refresh token stored in SQLite
+- **Server** — Node.js + Express serving both API and frontend from port 3000
+
+---
+
+## Project Structure (23 files)
+
+```
+WebAnalytics/
+├── backend/
+│   ├── server.js          ← Express entry point (await DB init → listen)
+│   ├── package.json       ← sql.js, bcryptjs, jwt, @google-analytics/data, etc.
+│   ├── .env               ← Google credentials + JWT secret
+│   ├── db/
+│   │   ├── schema.sql     ← users + websites tables
+│   │   └── database.js    ← sql.js with better-sqlite3-compatible API wrapper
+│   ├── middleware/
+│   │   └── authMiddleware.js  ← JWT verification
+│   └── routes/
+│       ├── auth.js        ← register, login, logout, /me
+│       ├── google.js      ← OAuth2 /connect + /callback
+│       ├── websites.js    ← CRUD for GA4 properties
+│       └── analytics.js   ← GA4 proxy: realtime, overview, audience, acquisition, behavior
+└── frontend/
+    ├── index.html         ← Landing/marketing page
+    ├── login.html
+    ├── register.html
+    ├── dashboard.html     ← SPA with 5 analytics sections + settings
+    ├── css/
+    │   ├── style.css      ← Design tokens, components, tables, modals
+    │   ├── auth.css       ← Animated glassmorphism auth cards
+    │   └── dashboard.css  ← Sidebar, KPI cards, chart containers
+    └── js/
+        ├── api.js         ← Fetch wrapper + auth guard
+        ├── auth.js        ← Login/register form logic
+        ├── charts.js      ← Chart.js wrappers (line, doughnut, bar)
+        └── analytics.js   ← GA4 data fetcher + chart/table renderer
+```
+
+---
+
+## Verification Results
+
+### ✅ Landing Page
+Hero with animated gradient background, feature grid, and CTA buttons.
+
+### ✅ Registration → Dashboard (no errors)
+Form validates → bcrypt hashes password → stores in SQLite → issues JWT cookie → redirects to dashboard.
+
+![Dashboard after registration](file:///C:/Users/oblivora/.gemini/antigravity/brain/d15ef9b1-29f8-4a52-9acc-0fb6cace41f5/successful_registration_dashboard_1772127008279.png)
+
+### ✅ Settings Page
+Add GA4 Property form + connect button + instructions for getting the Property ID.
+
+![Settings](file:///C:/Users/oblivora/.gemini/antigravity/brain/d15ef9b1-29f8-4a52-9acc-0fb6cace41f5/settings_page_1772126838114.png)
+
+### ✅ Server Running
+```
+🚀 WebAnalytics running at http://localhost:3000
+   → Landing:   http://localhost:3000/
+   → Dashboard: http://localhost:3000/dashboard.html
+```
+![App recording](file:///C:/Users/oblivora/.gemini/antigravity/brain/d15ef9b1-29f8-4a52-9acc-0fb6cace41f5/webapp_verification_1772126634294.webp)
+
+---
+
+## How to Use — Connect Real GA4 Data
+
+1. **Register** at `http://localhost:3000`
+2. In **Settings** → enter a display name + your **GA4 Property ID** (just the number, e.g. `123456789`) → click **Add Property**
+3. Click **Connect Google Analytics** → Google consent screen appears → click **Allow**
+4. You're redirected back — your property is connected
+5. Select the property from the **Active Property** dropdown
+6. All 5 dashboard sections now show **real GA4 data**
+
+> **GA4 Property ID** can be found in: Google Analytics → Admin → Property Settings → Property ID
+
+---
+
+## How to Start the Server
+
+```powershell
+cd C:\Users\oblivora\OneDrive\Desktop\WebAnalytics\backend
+node server.js
+# or for dev with auto-restart:
+npx nodemon server.js
+```
+
+---
+
+## Deployment Notes
+
+When deploying to a server (Render, Railway, VPS, etc.):
+1. Update [.env](file:///C:/Users/oblivora/OneDrive/Desktop/WebAnalytics/backend/.env) → set `REDIRECT_URI` and `FRONTEND_URL` to your production domain
+2. Update the **Authorized redirect URIs** in Google Cloud Console to match
+3. The SQLite database (`db/analytics.db`) persists on disk — for production consider mounting a persistent volume or switching to PostgreSQL (swap `sql.js` for `pg`)

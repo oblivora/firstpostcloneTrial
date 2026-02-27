@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebAnalytics — Real-Time Analytics for Your Website</title>
+    <meta name="description"
+        content="Connect your Google Analytics account and view real-time traffic, audience, acquisition, and behavior analytics in one beautiful dashboard." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+        /* Landing-page specific styles */
+        .landing {
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ── Nav ─── */
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 60px;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(7, 9, 15, 0.85);
+            backdrop-filter: blur(12px);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-logo-icon {
+            width: 34px;
+            height: 34px;
+            background: var(--accent);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .nav-logo-text {
+            font-size: 17px;
+            font-weight: 800;
+            letter-spacing: -0.4px;
+        }
+
+        .nav-logo-text span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ── Hero ─── */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 100px 24px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 50% at 50% -10%, rgba(99, 102, 241, 0.22) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: var(--accent-soft);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 20px;
+            padding: 5px 14px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 28px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .hero-badge span {
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .hero-title {
+            font-size: clamp(40px, 6vw, 72px);
+            font-weight: 900;
+            letter-spacing: -2.5px;
+            line-height: 1.05;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+
+        .hero-title .gradient {
+            background: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 540px;
+            line-height: 1.7;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* ─ Dashboard preview ─ */
+        .preview-wrapper {
+            margin: 70px auto 0;
+            max-width: 1000px;
+            width: 90%;
+            position: relative;
+        }
+
+        .preview-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(135deg, var(--accent), var(--cyan));
+            border-radius: calc(var(--radius-lg) + 2px);
+            opacity: 0.25;
+            filter: blur(20px);
+        }
+
+        .preview-img {
+            width: 100%;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            display: block;
+            position: relative;
+            background: var(--bg-surface);
+            overflow: hidden;
+        }
+
+        .preview-mock {
+            padding: 24px;
+            min-height: 280px;
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 16px;
+        }
+
+        .mock-sidebar {
+            background: var(--bg-elevated);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .mock-sidebar-item {
+            height: 30px;
+            background: var(--bg-hover);
+            border-radius: var(--radius-sm);
+        }
+
+        .mock-sidebar-item:first-child {
+            background: var(--accent-soft);
+        }
+
+        .mock-content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .mock-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .mock-card {
+            background: var(--bg-elevated);
+            border-radius: var(--radius-md);
+            height: 70px;
+            border: 1px solid var(--border);
+        }
+
+        .mock-chart {
+            background: var(--bg-elevated);
+            border-radius: var(--radius-md);
+            flex: 1;
+            min-height: 100px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            padding: 16px;
+            gap: 6px;
+        }
+
+        .mock-bar {
+            flex: 1;
+            border-radius: 3px 3px 0 0;
+            opacity: 0.7;
+        }
+
+        /* ── Features ─── */
+        .features {
+            padding: 90px 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .features-label {
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .features-title {
+            text-align: center;
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 12px;
+        }
+
+        .features-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto 56px;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 26px;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            border-color: var(--border-light);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 20px;
+        }
+
+        .feature-icon.indigo {
+            background: var(--accent-soft);
+        }
+
+        .feature-icon.green {
+            background: var(--green-soft);
+        }
+
+        .feature-icon.cyan {
+            background: rgba(6, 182, 212, 0.12);
+        }
+
+        .feature-icon.yellow {
+            background: var(--yellow-soft);
+        }
+
+        .feature-icon.purple {
+            background: rgba(168, 85, 247, 0.12);
+        }
+
+        .feature-icon.red {
+            background: var(--red-soft);
+        }
+
+        .feature-card h3 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        /* ── CTA Section ─── */
+        .cta-section {
+            padding: 80px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+        }
+
+        .cta-section h2 {
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .cta-section p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 36px;
+            position: relative;
+        }
+
+        .cta-section .hero-cta {
+            position: relative;
+        }
+
+        /* ── Footer ─── */
+        .footer {
+            padding: 28px 60px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="landing">
+        <!-- Nav -->
+        <nav class="nav">
+            <div class="nav-logo">
+                <div class="nav-logo-icon">
+                    <svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                    </svg>
+                </div>
+                <span class="nav-logo-text">Web<span>Analytics</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="/login.html" class="btn btn-ghost btn-sm">Sign In</a>
+                <a href="/register.html" class="btn btn-primary btn-sm">Get Started Free</a>
+            </div>
+        </nav>
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-badge">
+                <span></span>
+                Powered by Google Analytics Data API
+            </div>
+            <h1 class="hero-title">
+                Real-Time Analytics<br />
+                <span class="gradient">Made Beautiful</span>
+            </h1>
+            <p class="hero-subtitle">
+                Connect your Google Analytics account in one click and get a stunning,
+                real-time view of your website traffic, audience, and conversions.
+            </p>
+            <div class="hero-cta">
+                <a href="/register.html" class="btn btn-primary btn-lg">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4" />
+                        <polyline points="10 17 15 12 10 7" />
+                        <line x1="15" y1="12" x2="3" y2="12" />
+                    </svg>
+                    Start for Free
+                </a>
+                <a href="/login.html" class="btn btn-secondary btn-lg">Sign In</a>
+            </div>
+
+            <!-- Dashboard preview mock -->
+            <div class="preview-wrapper">
+                <div class="preview-img">
+                    <div class="preview-mock">
+                        <div class="mock-sidebar">
+                            <div class="mock-sidebar-item"></div>
+                            <div class="mock-sidebar-item" style="opacity:0.5"></div>
+                            <div class="mock-sidebar-item" style="opacity:0.5"></div>
+                            <div class="mock-sidebar-item" style="opacity:0.5"></div>
+                            <div class="mock-sidebar-item" style="opacity:0.5"></div>
+                        </div>
+                        <div class="mock-content">
+                            <div class="mock-cards">
+                                <div class="mock-card"></div>
+                                <div class="mock-card"></div>
+                                <div class="mock-card"></div>
+                                <div class="mock-card"></div>
+                            </div>
+                            <div class="mock-chart">
+                                <div class="mock-bar" style="height:40%;background:var(--accent)"></div>
+                                <div class="mock-bar" style="height:65%;background:var(--accent)"></div>
+                                <div class="mock-bar" style="height:45%;background:var(--accent)"></div>
+                                <div class="mock-bar" style="height:80%;background:var(--accent)"></div>
+                                <div class="mock-bar" style="height:55%;background:var(--accent)"></div>
+                                <div class="mock-bar" style="height:90%;background:var(--accent)"></div>
+                                <div class="mock-bar" style="height:70%;background:var(--accent)"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="features">
+            <p class="features-label">Features</p>
+            <h2 class="features-title">Everything You Need</h2>
+            <p class="features-subtitle">
+                A complete analytics suite powered by your real GA4 data, displayed in a clean, modern interface.
+            </p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon indigo">
+                        <svg width="22" height="22" fill="none" stroke="var(--accent)" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg>
+                    </div>
+                    <h3>Real-Time Tracking</h3>
+                    <p>See exactly who is on your site right now. Live user count and active pages, refreshed every 10
+                        seconds.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon green">
+                        <svg width="22" height="22" fill="none" stroke="var(--green)" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                        </svg>
+                    </div>
+                    <h3>Traffic Overview</h3>
+                    <p>Sessions, users, bounce rate, and duration trends visualized over 7, 14, or 30 days with
+                        beautiful line charts.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon cyan">
+                        <svg width="22" height="22" fill="none" stroke="var(--cyan)" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 00-3-3.87" />
+                            <path d="M16 3.13a4 4 0 010 7.75" />
+                        </svg>
+                    </div>
+                    <h3>Audience Insights</h3>
+                    <p>Understand your visitors with device breakdown, geographic data, and country-by-country session
+                        reports.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon yellow">
+                        <svg width="22" height="22" fill="none" stroke="var(--yellow)" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <line x1="12" y1="20" x2="12" y2="10" />
+                            <line x1="18" y1="20" x2="18" y2="4" />
+                            <line x1="6" y1="20" x2="6" y2="16" />
+                        </svg>
+                    </div>
+                    <h3>Acquisition Channels</h3>
+                    <p>See which traffic sources drive the most sessions — organic, social, direct, referral, and more.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon purple">
+                        <svg width="22" height="22" fill="none" stroke="#a855f7" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <line x1="16" y1="13" x2="8" y2="13" />
+                            <line x1="16" y1="17" x2="8" y2="17" />
+                            <polyline points="10 9 9 9 8 9" />
+                        </svg>
+                    </div>
+                    <h3>Behavior & Events</h3>
+                    <p>Top pages ranked by views, unique users, and average duration. Full event tracking breakdown.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon red">
+                        <svg width="22" height="22" fill="none" stroke="var(--red)" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                            <path d="M7 11V7a5 5 0 0110 0v4" />
+                        </svg>
+                    </div>
+                    <h3>Secure OAuth2 Login</h3>
+                    <p>Connect via Google's consent screen. Your data stays private — we only read, never write, to your
+                        GA4 account.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <h2>Ready to see your data?</h2>
+            <p>Create a free account and connect your Google Analytics property in under 2 minutes.</p>
+            <div class="hero-cta">
+                <a href="/register.html" class="btn btn-primary btn-lg">Create Free Account</a>
+                <a href="/login.html" class="btn btn-secondary btn-lg">Sign In</a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="nav-logo">
+                <div class="nav-logo-icon" style="width:24px;height:24px">
+                    <svg width="12" height="12" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                    </svg>
+                </div>
+                <span style="font-size:13px;font-weight:700">Web<span
+                        style="color:var(--accent)">Analytics</span></span>
+            </div>
+            <span>© 2024 WebAnalytics. Real-time analytics powered by Google Analytics Data API.</span>
+        </footer>
+    </div>
+
+    <div id="toast-container"></div>
+    <script src="/js/api.js"></script>
+</body>
+
+</html>
