@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Payment Portal | Kumar Aman</title>
+
+    <!-- Tailwind CSS for rapid styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+        .animate-shake {
+            animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+        }
+
+        @keyframes shake {
+
+            10%,
+            90% {
+                transform: translate3d(-1px, 0, 0);
+            }
+
+            20%,
+            80% {
+                transform: translate3d(2px, 0, 0);
+            }
+
+            30%,
+            50%,
+            70% {
+                transform: translate3d(-4px, 0, 0);
+            }
+
+            40%,
+            60% {
+                transform: translate3d(4px, 0, 0);
+            }
+        }
+    </style>
+    <!-- Analytics -->
+    <script defer src="https://solitary-wildflower-fea9.aman0arc.workers.dev/"></script>
+</head>
+
+<body class="bg-[#0d0f14] text-[#f0f2f8] font-sans h-screen flex flex-col justify-between overflow-hidden">
+
+    <!-- ─── NAVIGATION ─── -->
+    <nav class="navbar relative z-50 border-b border-gray-800" id="navbar">
+        <div class="nav-inner mx-auto max-w-7xl">
+            <a class="nav-logo" href="index.html">
+                <span class="logo-bracket">&lt;</span>KA<span class="logo-bracket">/&gt;</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="pay.html" class="nav-link active">Billing</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ─── MAIN CONTENT ─── -->
+    <main class="flex-grow flex items-center justify-center relative p-6">
+        <!-- Background Orbs / Glow -->
+        <div class="absolute inset-0 pointer-events-none opacity-40">
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#3b9eff] rounded-full blur-[120px] mix-blend-screen opacity-10">
+            </div>
+        </div>
+
+        <div
+            class="w-full max-w-[420px] bg-[#1a1f2e] border border-gray-800 rounded-2xl shadow-2xl p-8 relative z-10 transition-all duration-300">
+            <div class="text-center mb-8">
+                <div
+                    class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-[#3b9eff]/10 text-[#3b9eff] mb-4">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z">
+                        </path>
+                    </svg>
+                </div>
+                <h1 class="text-2xl font-bold mb-2 tracking-tight">Client <span class="text-[#3b9eff]">Payment
+                        Portal</span></h1>
+                <p class="text-[#8b92a8] text-sm">Enter your secure Client ID to access your personalized invoice and
+                    payment link.</p>
+            </div>
+
+            <form id="paymentForm" class="space-y-6">
+                <div>
+                    <label for="clientId"
+                        class="block text-xs font-semibold text-[#8b92a8] mb-2 uppercase tracking-wide">Secure Client
+                        ID</label>
+                    <input type="text" id="clientId" name="clientId" placeholder="E.g. 2026-CLIENT-01" required
+                        class="w-full px-4 py-3 bg-[#12151d] border border-gray-700/60 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3b9eff]/50 focus:border-[#3b9eff] text-white placeholder-gray-600 transition uppercase shadow-inner font-mono text-center tracking-wider"
+                        oninput="this.value = this.value.toUpperCase()">
+                </div>
+
+                <div id="errorMsg"
+                    class="hidden flex items-start gap-2.5 text-red-400 bg-red-500/10 border border-red-500/20 p-3.5 rounded-lg text-sm transition-all duration-300">
+                    <svg class="w-5 h-5 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span><strong>ID not recognized.</strong> Please verify your Client ID or contact me for
+                        assistance.</span>
+                </div>
+
+                <button type="submit" id="submitBtn"
+                    class="w-full relative flex items-center justify-center gap-2 px-6 py-3.5 bg-[#3b9eff] hover:bg-[#5fb3ff] text-white font-bold rounded-lg shadow-[0_4px_20px_rgba(59,158,255,0.3)] hover:shadow-[0_4px_30px_rgba(59,158,255,0.5)] transition-all duration-300 outline-none">
+                    <span id="btnText">Verify & Pay</span>
+                    <svg id="btnIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+
+                    <!-- Spinner -->
+                    <svg id="btnSpinner" class="hidden animate-spin w-5 h-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                        </path>
+                    </svg>
+                </button>
+            </form>
+
+            <div class="mt-8 pt-5 border-t border-gray-800 flex justify-center items-center gap-3">
+                <svg width="60" height="20" viewBox="0 0 100 25" fill="#8b92a8" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M7.4 20h21.1v-4.6H13V4.6H7.4V20zm24.6 0h21.1v-4.6h-15.5V4.6H32V20zm24.6 0h21.1v-4.6h-15.5V4.6h-5.6V20z" />
+                </svg> <!-- Mock Logo for razorpay/stripe -->
+                <span class="text-xs text-gray-600 font-medium tracking-wide">SECURED PAYMENTS</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- ── RAZORPAY CHECKOUT SCRIPT ── -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        // ── PRICING PORTAL CONFIGURATION ──
+        // 1. Deploy the worker.js file to Cloudflare Workers.
+        // 2. Once deployed, Cloudflare will provide a worker URL.
+        // 3. Paste that production URL below. Make sure it doesn't end with a slash.
+
+        const config = {
+            // Your deployed Cloudflare Worker URL
+            // Example: 'https://payment-worker.yourdomain.workers.dev'
+            workerUrl: 'https://solitary-wildflower-fea9.aman0arc.workers.dev'
+        };
+
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnIcon = document.getElementById('btnIcon');
+        const btnSpinner = document.getElementById('btnSpinner');
+        const errorMsg = document.getElementById('errorMsg');
+
+        // Helper func to reset button state
+        const resetBtn = (text = 'Verify & Pay') => {
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('opacity-80', 'cursor-wait');
+            btnText.textContent = text;
+            btnIcon.classList.remove('hidden');
+            btnSpinner.classList.add('hidden');
+        };
+
+        // Helper func to show error
+        const showError = (msg = "ID not recognized. Please verify your Client ID.") => {
+            errorMsg.classList.remove('hidden');
+            errorMsg.querySelector('span').innerHTML = `<strong>Error:</strong> ${msg}`;
+            resetBtn();
+
+            // Shake effect
+            submitBtn.classList.add('animate-shake');
+            setTimeout(() => submitBtn.classList.remove('animate-shake'), 500);
+        };
+
+        document.getElementById('paymentForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const clientId = document.getElementById('clientId').value.trim();
+            if (!clientId) return;
+
+            // 1. Loading State
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-80', 'cursor-wait');
+            btnText.textContent = 'Verifying...';
+            btnIcon.classList.add('hidden');
+            btnSpinner.classList.remove('hidden');
+            errorMsg.classList.add('hidden');
+
+            try {
+                // ── STEP 1: CREATE ORDER VIA WORKER ──
+                const orderResponse = await fetch(`${config.workerUrl}/create-order`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ clientId: clientId })
+                });
+
+                const orderData = await orderResponse.json();
+
+                if (!orderResponse.ok || !orderData.success) {
+                    throw new Error(orderData.error || "Invalid Client ID");
+                }
+
+                // ── STEP 2: OPEN RAZORPAY CHECKOUT ──
+                btnText.textContent = 'Awaiting Payment...'; // Update text while popup is open
+
+                const options = {
+                    "key": orderData.keyId, // The public Key ID returned from worker
+                    "amount": orderData.amount, // Amount is in currency subunits. 
+                    "currency": orderData.currency,
+                    "name": "Kumar Aman",
+                    "description": "Client Project Payment",
+                    "image": "assets/profile.jpeg", // Optional: Path to logo
+                    "order_id": orderData.orderId, // Order ID generated by worker
+
+                    "handler": async function (response) {
+                        try {
+                            btnText.textContent = 'Verifying Payment...';
+
+                            // ── STEP 3: VERIFY PAYMENT SIGNATURE VIA WORKER ──
+                            const verifyResponse = await fetch(`${config.workerUrl}/verify-payment`, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                    razorpay_payment_id: response.razorpay_payment_id,
+                                    razorpay_order_id: response.razorpay_order_id,
+                                    razorpay_signature: response.razorpay_signature
+                                })
+                            });
+
+                            const verifyData = await verifyResponse.json();
+
+                            if (verifyResponse.ok && verifyData.success) {
+                                // Payment is 100% verified securely on backend. Proceed to success.
+                                window.location.href = 'success.html';
+                            } else {
+                                throw new Error("Payment Verification Failed.");
+                            }
+
+                        } catch (err) {
+                            showError("Payment received but verification failed. Please contact support.");
+                        }
+                    },
+                    "prefill": {
+                        "name": "Client",
+                    },
+                    "theme": {
+                        "color": "#3b9eff" // Match your portal's blue theme
+                    },
+                    "modal": {
+                        "ondismiss": function () {
+                            // User closed the popup without paying
+                            resetBtn('Verify & Pay');
+                        }
+                    }
+                };
+
+                // Initialize and open Razorpay
+                const rzp = new Razorpay(options);
+
+                rzp.on('payment.failed', function (response) {
+                    // Razorpay native failure hook
+                    showError(`Payment Failed: ${response.error.description}`);
+                });
+
+                rzp.open();
+
+            } catch (error) {
+                // Initial creation error (e.g., Invalid ID)
+                showError(error.message);
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful | Kumar Aman</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        .check-anim {
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: drawCheck 0.6s ease forwards 0.2s;
+        }
+
+        @keyframes drawCheck {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .pop-anim {
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+    <!-- Analytics -->
+    <script defer src="https://solitary-wildflower-fea9.aman0arc.workers.dev/"></script>
+</head>
+
+<body
+    class="bg-[#0d0f14] text-[#f0f2f8] font-sans h-screen flex items-center justify-center p-6 relative overflow-hidden">
+    <!-- Glow -->
+    <div class="absolute inset-0 pointer-events-none opacity-30">
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#4dea7b] rounded-full blur-[150px] mix-blend-screen opacity-10">
+        </div>
+    </div>
+
+    <div
+        class="w-full max-w-md bg-[#1a1f2e] border border-gray-800 rounded-2xl shadow-2xl p-10 text-center relative z-10 pop-anim">
+
+        <!-- Animated Checkmark -->
+        <div
+            class="w-20 h-20 bg-[#4dea7b]/10 border-2 border-[#4dea7b]/30 rounded-full flex items-center justify-center mx-auto mb-6 text-[#4dea7b] shadow-[0_0_30px_rgba(77,234,123,0.15)]">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path class="check-anim" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                    d="M5 13l4 4L19 7"></path>
+            </svg>
+        </div>
+
+        <h1 class="text-3xl font-extrabold mb-3 tracking-tight">Payment <span class="text-[#4dea7b]">Successful</span>
+        </h1>
+
+        <p class="text-[#8b92a8] text-sm leading-relaxed mb-8">
+            Thank you for your business. I have received your payment and will be in touch with you shortly to proceed
+            with the next steps of your project.
+        </p>
+
+        <div class="p-4 bg-[#12151d] border border-gray-800 rounded-xl mb-8 flex justify-between items-center text-sm">
+            <span class="text-gray-500 font-medium">Status</span>
+            <span class="text-[#4dea7b] font-semibold flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-[#4dea7b] animate-pulse"></span>
+                Confirmed
+            </span>
+        </div>
+
+        <a href="index.html"
+            class="inline-flex items-center justify-center gap-2 w-full px-6 py-3.5 bg-white hover:bg-gray-100 text-[#0d0f14] rounded-lg transition-colors font-bold shadow-lg">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18">
+                </path>
+            </svg>
+            Back to Home
+        </a>
+    </div>
+</body>
+
+</html>

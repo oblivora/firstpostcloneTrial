@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta -->
+    <title>About Me | Kumar Aman — Web Developer</title>
+    <meta name="description"
+        content="Learn more about Kumar Aman — a Web Developer dedicated to helping small businesses and individuals build high-impact websites in two weeks or less." />
+    <meta name="author" content="Kumar Aman" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://YOUR_DOMAIN/about.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://YOUR_DOMAIN/about.html" />
+    <meta property="og:title" content="About Me | Kumar Aman — Web Developer" />
+    <meta property="og:description"
+        content="Web Developer dedicated to helping small businesses establish a high-impact digital presence." />
+    <meta property="og:image" content="https://YOUR_DOMAIN/assets/profile.jpeg" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+        /* ── ABOUT PAGE EXTRA STYLES ─────────────────────────── */
+        .about-page-hero {
+            min-height: 40vh;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 60px;
+            padding-top: 120px;
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .about-page-hero .hero-grid-bg {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(59, 158, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 158, 255, 0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+            -webkit-mask-image: radial-gradient(ellipse 80% 100% at 50% 0%, black 0%, transparent 80%);
+            mask-image: radial-gradient(ellipse 80% 100% at 50% 0%, black 0%, transparent 80%);
+        }
+
+        .about-page-hero .hero-orbs {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .about-page-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--blue);
+            letter-spacing: 0.08em;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .about-page-eyebrow::before {
+            content: '';
+            display: block;
+            width: 32px;
+            height: 2px;
+            background: var(--blue);
+            border-radius: 2px;
+        }
+
+        .about-page-heading {
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            animation: fadeDown 0.6s ease 0.2s both;
+        }
+
+        .about-page-heading .accent {
+            color: var(--blue);
+        }
+
+        .about-page-sub {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 560px;
+            margin-top: 16px;
+            line-height: 1.75;
+            animation: fadeDown 0.6s ease 0.35s both;
+        }
+
+        /* ── MAIN CONTENT CARD ───────────────────────────────── */
+        .about-content-section {
+            padding: 80px 0 120px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 48px;
+            align-items: start;
+        }
+
+        /* Left: paragraphs */
+        .about-body {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .about-intro-text {
+            font-size: 1.08rem;
+            color: var(--text-secondary);
+            line-height: 1.85;
+            border-left: 3px solid var(--blue);
+            padding-left: 24px;
+            animation: fadeDown 0.6s ease 0.1s both;
+        }
+
+        .about-intro-text+.about-intro-text {
+            border-left: none;
+            padding-left: 0;
+        }
+
+        .about-paragraphs p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.85;
+            margin-bottom: 20px;
+        }
+
+        .about-paragraphs p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ── WHAT I DO BEST ──────────────────────────────────── */
+        .what-i-do {
+            margin-top: 8px;
+        }
+
+        .what-i-do-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+        }
+
+        .service-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 24px 28px;
+            transition: var(--transition);
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            animation: fadeDown 0.6s ease both;
+        }
+
+        .service-card:hover {
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow-blue);
+            transform: translateX(6px);
+        }
+
+        .service-icon {
+            width: 42px;
+            height: 42px;
+            flex-shrink: 0;
+            background: var(--blue-dim);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blue);
+        }
+
+        .service-card-body h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+
+        .service-card-body p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ── CLOSING QUOTE ───────────────────────────────────── */
+        .closing-note {
+            background: linear-gradient(135deg, var(--bg-raised), var(--bg-card));
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 28px 32px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            position: relative;
+            margin-top: 8px;
+        }
+
+        .closing-note::before {
+            content: '"';
+            position: absolute;
+            top: -18px;
+            left: 24px;
+            font-size: 5rem;
+            font-weight: 900;
+            color: var(--blue);
+            opacity: 0.25;
+            line-height: 1;
+            font-family: Georgia, serif;
+        }
+
+        /* ── SIDEBAR ─────────────────────────────────────────── */
+        .about-sidebar {
+            position: sticky;
+            top: 100px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .sidebar-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            transition: var(--transition);
+        }
+
+        .sidebar-card:hover {
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow-blue);
+        }
+
+        .sidebar-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .sidebar-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--blue);
+            box-shadow: 0 0 28px rgba(59, 158, 255, 0.35);
+            margin-bottom: 16px;
+        }
+
+        .sidebar-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sidebar-name {
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            margin-bottom: 4px;
+        }
+
+        .sidebar-role {
+            font-size: 0.82rem;
+            color: var(--blue);
+            font-family: var(--font-mono);
+            margin-bottom: 16px;
+        }
+
+        .sidebar-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 14px;
+            background: rgba(77, 234, 123, 0.1);
+            border: 1px solid rgba(77, 234, 123, 0.25);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            color: #4dea7b;
+            font-weight: 600;
+        }
+
+        .sidebar-badge-dot {
+            width: 6px;
+            height: 6px;
+            background: #4dea7b;
+            border-radius: 50%;
+            animation: pulse-dot 2s infinite;
+        }
+
+        .sidebar-divider {
+            width: 100%;
+            height: 1px;
+            background: var(--border);
+            margin: 20px 0;
+        }
+
+        .sidebar-stat-row {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .sidebar-stat {
+            text-align: center;
+        }
+
+        .sidebar-stat-num {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1;
+        }
+
+        .sidebar-stat-suffix {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--blue);
+        }
+
+        .sidebar-stat-label {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-top: 5px;
+            letter-spacing: 0.04em;
+        }
+
+        /* Sidebar highlight items */
+        .sidebar-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .sidebar-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+        }
+
+        .sidebar-list li .sl-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--blue);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .sidebar-card-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        /* CTA in sidebar */
+        .sidebar-cta {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            transition: color 0.25s;
+            margin-bottom: 32px;
+        }
+
+        .back-link:hover {
+            color: var(--blue);
+        }
+
+        /* ── RESPONSIVE ──────────────────────────────────────── */
+        @media (max-width: 900px) {
+            .about-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .about-sidebar {
+                position: static;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .about-page-heading {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+    <!-- Analytics -->
+    <script defer src="https://solitary-wildflower-fea9.aman0arc.workers.dev/"></script>
+</head>
+
+<body>
+
+    <!-- ─── CURSOR GLOW ─── -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- ─── NOISE OVERLAY ─── -->
+    <div class="noise-overlay"></div>
+
+    <!-- ─── NAVIGATION ─── -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a class="nav-logo" href="index.html">
+                <span class="logo-bracket">&lt;</span>KA<span class="logo-bracket">/&gt;</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="about.html" class="nav-link active">About</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="pay.html" class="nav-link">Billing</a></li>
+            </ul>
+            <button class="nav-burger" id="navBurger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ─── PAGE HERO ─── -->
+    <header class="about-page-hero">
+        <div class="hero-grid-bg"></div>
+        <div class="hero-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+        </div>
+        <div class="container" style="position:relative;z-index:2;width:100%;">
+            <a href="index.html" class="back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+                Back to Portfolio
+            </a>
+            <p class="about-page-eyebrow">// about_me</p>
+            <h1 class="about-page-heading">
+                The Developer Behind<br />
+                <span class="accent">The Code.</span>
+            </h1>
+            <p class="about-page-sub">
+                Helping small businesses and individuals turn big ideas into powerful, live websites — delivered in two
+                weeks.
+            </p>
+        </div>
+    </header>
+
+    <!-- ─── MAIN CONTENT ─── -->
+    <main class="about-content-section">
+        <div class="container">
+            <div class="about-layout">
+                <!-- Left column -->
+                <div class="about-body">
+
+                    <p class="about-intro-text" data-reveal>
+                        I'm a Web Developer dedicated to helping small businesses and individuals establish a
+                        <strong style="color:var(--text-primary)">high-impact digital presence</strong>. I specialize in
+                        building sleek, functional websites that don't just look good but actually work for your
+                        goals — whether that's landing a new job or growing your customer base.
+                    </p>
+
+                    <div class="about-paragraphs" data-reveal>
+                        <p>
+                            The web moves fast, and I believe your business should too. That's why I've refined my
+                            process to deliver fully realized, professional websites <strong
+                                style="color:var(--text-primary)">within two weeks</strong>. No endless
+                            back-and-forth or "coming soon" pages that stay up for months — just a straightforward path
+                            from your initial idea to a live URL.
+                        </p>
+                    </div>
+
+                    <!-- What I Do Best -->
+                    <div class="what-i-do" data-reveal>
+                        <h2 class="what-i-do-title">What I Do Best</h2>
+                        <div class="service-cards">
+
+                            <!-- Service 1 -->
+                            <div class="service-card" style="animation-delay:0.1s">
+                                <div class="service-icon">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                        <polyline points="9 22 9 12 15 12 15 22" />
+                                    </svg>
+                                </div>
+                                <div class="service-card-body">
+                                    <h4>Small Business Solutions</h4>
+                                    <p>From local shops to service providers, I build sites that turn visitors into
+                                        clients.</p>
+                                </div>
+                            </div>
+
+                            <!-- Service 2 -->
+                            <div class="service-card" style="animation-delay:0.2s">
+                                <div class="service-icon">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <rect x="2" y="7" width="20" height="14" rx="2" />
+                                        <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                                        <line x1="12" y1="12" x2="12" y2="16" />
+                                        <line x1="10" y1="14" x2="14" y2="14" />
+                                    </svg>
+                                </div>
+                                <div class="service-card-body">
+                                    <h4>Personal Portfolios</h4>
+                                    <p>I create digital resumes and showcases that help professionals stand out in a
+                                        crowded market.</p>
+                                </div>
+                            </div>
+
+                            <!-- Service 3 -->
+                            <div class="service-card" style="animation-delay:0.3s">
+                                <div class="service-icon">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <polyline points="13 2 13 9 20 9" />
+                                        <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9.34" />
+                                        <polygon points="18 2 22 6 12 16 8 16 8 12 18 2" />
+                                    </svg>
+                                </div>
+                                <div class="service-card-body">
+                                    <h4>Performance-First Design</h4>
+                                    <p>Every site I build is mobile-responsive, fast-loading, and easy for you to manage
+                                        once we're done.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Closing note -->
+                    <div class="closing-note" data-reveal>
+                        I'm not a fan of over-complicating things. My approach is simple: we talk about what you need,
+                        I build it, and you get back to running your business with a powerful new tool in your kit.
+                    </div>
+
+                </div>
+
+                <!-- Right sidebar -->
+                <aside class="about-sidebar">
+
+                    <!-- Profile Card -->
+                    <div class="sidebar-card sidebar-profile">
+                        <div class="sidebar-avatar">
+                            <img src="assets/profile.jpeg" alt="Kumar Aman" />
+                        </div>
+                        <p class="sidebar-name">Kumar Aman</p>
+                        <p class="sidebar-role">Web Developer</p>
+                        <span class="sidebar-badge">
+                            <span class="sidebar-badge-dot"></span>
+                            Available for projects
+                        </span>
+
+                        <div class="sidebar-divider"></div>
+
+                        <div class="sidebar-stat-row">
+                            <div class="sidebar-stat">
+                                <div>
+                                    <span class="sidebar-stat-num">10</span><span class="sidebar-stat-suffix">+</span>
+                                </div>
+                                <div class="sidebar-stat-label">Projects</div>
+                            </div>
+                            <div class="sidebar-stat">
+                                <div>
+                                    <span class="sidebar-stat-num">8</span><span class="sidebar-stat-suffix">+</span>
+                                </div>
+                                <div class="sidebar-stat-label">Clients</div>
+                            </div>
+                            <div class="sidebar-stat">
+                                <div>
+                                    <span class="sidebar-stat-num">2</span><span class="sidebar-stat-suffix">wk</span>
+                                </div>
+                                <div class="sidebar-stat-label">Delivery</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Highlights Card -->
+                    <div class="sidebar-card">
+                        <p class="sidebar-card-title">Quick Highlights</p>
+                        <ul class="sidebar-list">
+                            <li><span class="sl-dot"></span>Based in India</li>
+                            <li><span class="sl-dot"></span>2-week delivery guarantee</li>
+                            <li><span class="sl-dot"></span>Mobile-first & SEO-ready</li>
+                            <li><span class="sl-dot"></span>Small business specialist</li>
+                            <li><span class="sl-dot"></span>Portfolio & resume sites</li>
+                            <li><span class="sl-dot"></span>Easy handoff & management</li>
+                        </ul>
+                    </div>
+
+                    <!-- CTA Card -->
+                    <div class="sidebar-card">
+                        <p class="sidebar-card-title">Ready to Start?</p>
+                        <div class="sidebar-cta">
+                            <a href="mailto:aman9clean@gmail.com" class="btn btn-primary btn-full">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                    <polyline points="22,6 12,13 2,6" />
+                                </svg>
+                                Email Me
+                            </a>
+                            <a href="index.html#contact" class="btn btn-ghost btn-full">
+                                View Contact Info
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- ─── FOOTER ─── -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-logo">
+                <span class="logo-bracket">&lt;</span>KA<span class="logo-bracket">/&gt;</span>
+            </div>
+            <p class="footer-copy">© 2026 Kumar Aman. All rights reserved. Crafted with precision &amp; passion.</p>
+            <a href="mailto:aman9clean@gmail.com" class="btn btn-primary btn-sm footer-hire">Hire Me</a>
+        </div>
+    </footer>
+
+    <!-- ─── THEME TOGGLE ─── -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

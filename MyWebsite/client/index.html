@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta -->
+    <title>Kumar Aman | Web Developer</title>
+    <meta name="description"
+        content="Kumar Aman — Web Developer specialising in portfolio &amp; small-business websites. Hire me to build your next project." />
+    <meta name="author" content="Kumar Aman" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Canonical — replace YOUR_DOMAIN with your actual domain once purchased -->
+    <link rel="canonical" href="https://YOUR_DOMAIN/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://YOUR_DOMAIN/" />
+    <meta property="og:title" content="Kumar Aman | Web Developer" />
+    <meta property="og:description"
+        content="Portfolio &amp; small-business websites built with precision. Let's work together." />
+    <meta property="og:image" content="https://YOUR_DOMAIN/assets/profile.jpeg" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ViranovaLabs" />
+    <meta name="twitter:title" content="Kumar Aman | Web Developer" />
+    <meta name="twitter:description" content="Portfolio &amp; small-business websites built with precision." />
+    <meta name="twitter:image" content="https://YOUR_DOMAIN/assets/profile.jpeg" />
+
+    <!-- Favicon (add your own favicon.ico / apple-touch-icon to client/) -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <!-- Analytics -->
+    <script defer src="https://solitary-wildflower-fea9.aman0arc.workers.dev/"></script>
+</head>
+
+<body>
+
+    <!-- ─── CURSOR GLOW ─── -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- ─── NOISE OVERLAY ─── -->
+    <div class="noise-overlay"></div>
+
+    <!-- ─── NAVIGATION ─── -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a class="nav-logo" href="#hero">
+                <span class="logo-bracket">&lt;</span>KA<span class="logo-bracket">/&gt;</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="pay.html" class="nav-link">Billing</a></li>
+            </ul>
+
+            <button class="nav-burger" id="navBurger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ─── HERO ─── -->
+    <section class="hero" id="hero">
+        <div class="hero-grid-bg"></div>
+        <div class="hero-orbs">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+        </div>
+        <div class="container hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Available for new projects
+            </div>
+            <h1 class="hero-title">
+                <span class="hero-name">Kumar Aman</span>
+                <span class="hero-role">
+                    I build
+                    <span class="type-wrapper">
+                        <span class="typed-text" id="typedText"></span>
+                        <span class="type-cursor">|</span>
+                    </span>
+                </span>
+            </h1>
+            <p class="hero-desc">
+                Full-stack web developer crafting pixel-perfect, <strong>highly responsive</strong> digital experiences
+                — from sleek frontends to powerful backends.
+            </p>
+            <div class="hero-actions">
+                <a href="about.html" class="btn btn-primary">
+                    About Me
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-num" data-target="10">0</span><span class="stat-suffix">+</span>
+                    <span class="stat-label">Projects Done</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-num" data-target="8">0</span><span class="stat-suffix">+</span>
+                    <span class="stat-label">Happy Clients</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="sidebar-stat">
+                    <div>
+                        <span class="sidebar-stat-num">2</span><span class="sidebar-stat-suffix">wk</span>
+                    </div>
+                    <div class="sidebar-stat-label">Delivery</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- ─── ABOUT ─── -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-label">
+                <span class="label-line"></span>
+                <span class="label-text">// about_me</span>
+            </div>
+            <div class="about-grid">
+                <div class="about-left" data-reveal>
+                    <div class="avatar-wrapper">
+                        <div class="avatar-ring"></div>
+                        <div class="avatar-inner">
+                            <img src="assets/profile.jpeg" alt="Kumar Aman" class="profile-img" />
+                        </div>
+                        <div class="avatar-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2L14.09 8.26L21 9.27L16 14.14L17.18 21.02L12 17.77L6.82 21.02L8 14.14L3 9.27L9.91 8.26L12 2Z" />
+                            </svg>
+                            Top Developer
+                        </div>
+                    </div>
+                </div>
+                <div class="about-right" data-reveal>
+                    <h2 class="section-title">Crafting Digital Experiences<br /><span class="accent">That
+                            Perform.</span></h2>
+                    <p class="about-text">Hi, I'm <strong>Kumar Aman</strong> — a passionate web developer specializing
+                        in building websites for small bussiness. If you want a portfolio website, you are at the right
+                        place.</p>
+
+                    <div style="margin-top: 2rem;">
+                        <a href="pricing.html" class="btn btn-primary">
+                            View Plans & Pricing
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── SKILLS ─── -->
+    <section class="section section-alt" id="skills">
+        <div class="container">
+            <div class="section-label">
+                <span class="label-line"></span>
+                <span class="label-text">// tech_stack</span>
+            </div>
+            <h2 class="section-title centered">Skills &amp; Technologies</h2>
+            <p class="section-sub centered">Tools I use to bring ideas to life</p>
+
+            <div class="skills-categories">
+                <div class="skill-cat" data-reveal>
+                    <div class="skill-cat-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="16 18 22 12 16 6" />
+                            <polyline points="8 6 2 12 8 18" />
+                        </svg>
+                    </div>
+                    <h3 class="skill-cat-title">Frontend</h3>
+                    <div class="skill-bars">
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>HTML / CSS</span><span class="skill-pct">95%</span>
+                            </div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>JavaScript / TypeScript</span><span
+                                    class="skill-pct">90%</span></div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>React / Next.js</span><span class="skill-pct">88%</span>
+                            </div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="88"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-cat" data-reveal>
+                    <div class="skill-cat-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2" />
+                            <line x1="8" y1="21" x2="16" y2="21" />
+                            <line x1="12" y1="17" x2="12" y2="21" />
+                        </svg>
+                    </div>
+                    <h3 class="skill-cat-title">Backend</h3>
+                    <div class="skill-bars">
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>Node.js / Express</span><span
+                                    class="skill-pct">85%</span></div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>MongoDB / PostgreSQL</span><span
+                                    class="skill-pct">80%</span></div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>REST APIs / GraphQL</span><span
+                                    class="skill-pct">82%</span></div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="82"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-cat" data-reveal>
+                    <div class="skill-cat-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="3" />
+                            <path d="M19.07 4.93A10 10 0 0 0 4.93 19.07" />
+                            <path d="M4.93 4.93A10 10 0 0 0 19.07 19.07" />
+                        </svg>
+                    </div>
+                    <h3 class="skill-cat-title">Tools &amp; Design</h3>
+                    <div class="skill-bars">
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>Figma / Design Systems</span><span
+                                    class="skill-pct">78%</span></div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="78"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>Git / DevOps</span><span class="skill-pct">85%</span>
+                            </div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar-item">
+                            <div class="skill-bar-header"><span>Performance Optimization</span><span
+                                    class="skill-pct">88%</span></div>
+                            <div class="skill-track">
+                                <div class="skill-fill" data-width="88"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── PROJECTS ─── -->
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section-label">
+                <span class="label-line"></span>
+                <span class="label-text">// selected_work</span>
+            </div>
+            <h2 class="section-title centered">Featured Projects</h2>
+            <p class="section-sub centered">A selection of work that showcases technical depth and design finesse</p>
+
+            <div class="projects-grid">
+
+                <!-- ── PROJECT 01 ─────────────────────────────────────────────── -->
+                <div class="project-card featured" data-reveal>
+                    <div class="project-header">
+                        <div class="project-num">01</div>
+                        <div class="project-links">
+                            <a href="#" class="icon-link" aria-label="View code">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polyline points="16 18 22 12 16 6" />
+                                    <polyline points="8 6 2 12 8 18" />
+                                </svg>
+                            </a>
+                            <a href="#" class="icon-link" aria-label="Live demo">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                    <polyline points="15 3 21 3 21 9" />
+                                    <line x1="10" y1="14" x2="21" y2="3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-visual">
+                        <div class="browser-bar">
+                            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+                            <span class="url-bar">analytics-dashboard.dev</span>
+                        </div>
+                        <div class="project-mockup">
+                            <div class="mock-nav"></div>
+                            <div class="mock-hero"></div>
+                            <div class="mock-cards">
+                                <div class="mock-card"></div>
+                                <div class="mock-card"></div>
+                                <div class="mock-card"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Google Analytics Clone</h3>
+                    <p class="project-desc">A fully functional, deployable Google Analytics alternative — featuring
+                        real-time visitor tracking, session analytics, bounce rates, traffic source breakdowns, and
+                        an interactive dashboard with live charts.</p>
+                    <div class="project-tech">
+                        <span class="tech-chip">Next.js</span>
+                        <span class="tech-chip">Node.js</span>
+                        <span class="tech-chip">MongoDB</span>
+                        <span class="tech-chip">Chart.js</span>
+                    </div>
+                </div>
+
+                <!-- ── ADD FUTURE PROJECTS BELOW ──────────────────────────────────
+                     To add a new project: copy one of the commented blocks below,
+                     paste it outside the comment, and fill in your details.
+                ─────────────────────────────────────────────────────────────────── -->
+
+                <!--
+                PROJECT SLOT 02 — uncomment when ready.
+
+                <div class="project-card" data-reveal>
+                    <div class="project-header">
+                        <div class="project-num">02</div>
+                        <div class="project-links">
+                            <a href="GITHUB_LINK" class="icon-link" aria-label="View code">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" />
+                                </svg>
+                            </a>
+                            <a href="LIVE_LINK" class="icon-link" aria-label="Live demo">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                    <polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Project Title</h3>
+                    <p class="project-desc">Short description of what the project does and the problem it solves.</p>
+                    <div class="project-tech">
+                        <span class="tech-chip">Tech 1</span>
+                        <span class="tech-chip">Tech 2</span>
+                        <span class="tech-chip">Tech 3</span>
+                    </div>
+                </div>
+                -->
+
+                <!--
+                PROJECT SLOT 03 — uncomment when ready.
+
+                <div class="project-card" data-reveal>
+                    <div class="project-header">
+                        <div class="project-num">03</div>
+                        <div class="project-links">
+                            <a href="GITHUB_LINK" class="icon-link" aria-label="View code">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" />
+                                </svg>
+                            </a>
+                            <a href="LIVE_LINK" class="icon-link" aria-label="Live demo">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                    <polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Project Title</h3>
+                    <p class="project-desc">Short description of what the project does and the problem it solves.</p>
+                    <div class="project-tech">
+                        <span class="tech-chip">Tech 1</span>
+                        <span class="tech-chip">Tech 2</span>
+                        <span class="tech-chip">Tech 3</span>
+                    </div>
+                </div>
+                -->
+
+                <!--
+                PROJECT SLOT 04 — uncomment when ready.
+
+                <div class="project-card" data-reveal>
+                    <div class="project-header">
+                        <div class="project-num">04</div>
+                        <div class="project-links">
+                            <a href="GITHUB_LINK" class="icon-link" aria-label="View code">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" />
+                                </svg>
+                            </a>
+                            <a href="LIVE_LINK" class="icon-link" aria-label="Live demo">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                    <polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Project Title</h3>
+                    <p class="project-desc">Short description of what the project does and the problem it solves.</p>
+                    <div class="project-tech">
+                        <span class="tech-chip">Tech 1</span>
+                        <span class="tech-chip">Tech 2</span>
+                        <span class="tech-chip">Tech 3</span>
+                    </div>
+                </div>
+                -->
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ─── CONTACT ─── -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-label">
+                <span class="label-line"></span>
+                <span class="label-text">// get_in_touch</span>
+            </div>
+            <h2 class="section-title centered">Let's Build Something<br /><span class="accent">Remarkable</span></h2>
+            <p class="section-sub centered">Have a project in mind? Let's talk about it.</p>
+
+            <div class="contact-center" data-reveal>
+                <div class="contact-info-card">
+                    <h3>Reach Out Directly</h3>
+                    <div class="contact-info-items">
+                        <div class="contact-info-item">
+                            <div class="ci-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                    <polyline points="22,6 12,13 2,6" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="ci-label">Email</div>
+                                <div class="ci-value"><a href="mailto:aman9clean@gmail.com">aman9clean@gmail.com</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="ci-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.56 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="ci-label">Phone</div>
+                                <div class="ci-value"><a href="tel:+918603075007">+91 8603075007</a></div>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="ci-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="ci-label">Location</div>
+                                <div class="ci-value">India</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://wa.me/918603075007" target="_blank" rel="noopener noreferrer"
+                            class="social-link" aria-label="WhatsApp">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/kaman0dev/" class="social-link" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                        </a>
+                        <a href="https://x.com/ViranovaLabs" target="_blank" rel="noopener noreferrer"
+                            class="social-link" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/aman.kineo/" target="_blank" rel="noopener noreferrer"
+                            class="social-link" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                        </a>
+                    </div>
+                    <p class="contact-cta-msg">I'm available for freelance work and exciting new projects.<br />Drop me
+                        a message — I'd love to hear from you!</p>
+                    <div class="contact-actions"
+                        style="margin-top: 24px; display: flex; flex-direction: column; gap: 16px;">
+                        <div class="action-group" style="display: flex; gap: 16px; flex-wrap: wrap;">
+                            <a href="mailto:aman9clean@gmail.com" class="btn btn-primary">
+                                Email Me Directly
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                    <polyline points="22,6 12,13 2,6" />
+                                </svg>
+                            </a>
+                            <button id="copyBtn" onclick="copyTemplate()" class="btn btn-ghost">
+                                Copy Email Template
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="action-group" style="display: flex; gap: 16px; flex-wrap: wrap;">
+                            <a href="https://wa.me/918603075007" target="_blank" rel="noopener noreferrer"
+                                class="btn btn-whatsapp">
+                                <svg class="fill-current" viewBox="0 0 24 24" width="20" height="20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-5.824 4.74-10.563 10.564-10.563 5.826 0 10.564 4.741 10.564 10.564 0 5.824-4.74 10.564-10.568 10.564z" />
+                                </svg>
+                                Chat on WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── QUOTES ─── -->
+    <section class="section section-alt quotes-section" id="quotes">
+        <div class="container">
+            <div class="section-label">
+                <span class="label-line"></span>
+                <span class="label-text"></span>
+            </div>
+            <h2 class="section-title centered"></h2>
+            <p class="section-sub centered"></p>
+            <div class="quote-display" id="quoteDisplay">
+                <div class="quote-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M3 21c0 .55.45 1 1 1h5c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v5H1v3h2v4zm0-12h2V7H3v2zm10 12c0 .55.45 1 1 1h5c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1h-5c-.55 0-1 .45-1 1v5h-2v3h2v4zm0-12h2V7h-2v2z" />
+                    </svg>
+                </div>
+                <blockquote class="quote-text" id="quoteText"></blockquote>
+                <cite class="quote-author" id="quoteAuthor"></cite>
+                <div class="quote-timer">
+                    <div class="quote-timer-bar" id="quoteTimerBar"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FOOTER ─── -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-logo">
+                <span class="logo-bracket">&lt;</span>KA<span class="logo-bracket">/&gt;</span>
+            </div>
+            <p class="footer-copy">© 2026 Kumar Aman. All rights reserved. Crafted with precision &amp; passion.</p>
+            <a href="#contact" class="btn btn-primary btn-sm footer-hire">Hire Me</a>
+        </div>
+        <div class="footer-terms-container">
+            <a href="terms.html" class="footer-terms">Terms & Conditions</a>
+        </div>
+    </footer>
+
+    <!-- ─── THEME TOGGLE ─── -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+    </button>
+
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta -->
+    <title>Plans & Pricing | Kumar Aman — Web Developer</title>
+    <meta name="description"
+        content="Affordable, high-impact web development packages for small businesses and individuals. Delivered in two weeks." />
+    <meta name="author" content="Kumar Aman" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://YOUR_DOMAIN/pricing.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://YOUR_DOMAIN/pricing.html" />
+    <meta property="og:title" content="Plans & Pricing | Kumar Aman — Web Developer" />
+    <meta property="og:description"
+        content="Affordable, high-impact web development packages for small businesses and individuals. Delivered in two weeks." />
+    <meta property="og:image" content="https://YOUR_DOMAIN/assets/profile.jpeg" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+        /* ── PRICING PAGE EXTRA STYLES ───────────────────────── */
+        .pricing-hero {
+            min-height: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-bottom: 60px;
+            padding-top: 140px;
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .pricing-hero .hero-grid-bg {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(59, 158, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 158, 255, 0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+            -webkit-mask-image: radial-gradient(ellipse 80% 100% at 50% 0%, black 0%, transparent 80%);
+            mask-image: radial-gradient(ellipse 80% 100% at 50% 0%, black 0%, transparent 80%);
+        }
+
+        .pricing-hero .hero-orbs {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .pricing-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--blue);
+            letter-spacing: 0.08em;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .pricing-heading {
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            animation: fadeDown 0.6s ease 0.2s both;
+        }
+
+        .pricing-sub {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            line-height: 1.75;
+            animation: fadeDown 0.6s ease 0.35s both;
+        }
+
+        /* Pricing Table Container */
+        .pricing-section {
+            padding: 60px 0 120px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .pricing-table-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            margin-bottom: 80px;
+            animation: fadeDown 0.6s ease 0.5s both;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .pricing-table th,
+        .pricing-table td {
+            padding: 24px 32px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pricing-table th {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            font-weight: 700;
+            background: var(--bg-surface);
+        }
+
+        .pricing-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .pricing-table tbody tr {
+            transition: var(--transition);
+        }
+
+        .pricing-table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.015);
+        }
+
+        /* Column Styles */
+        .col-pkg {
+            width: 25%;
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: var(--text-primary);
+        }
+
+        .col-ideal {
+            width: 25%;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .col-price {
+            width: 20%;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--blue);
+            font-family: var(--font-mono);
+        }
+
+        .price-prefix {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-family: var(--font-sans);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .col-features {
+            width: 30%;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* ── MAINTENANCE SUBSCRIPTION ── */
+        .maintenance-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            background: linear-gradient(135deg, var(--bg-raised), var(--bg-card));
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 48px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: fadeDown 0.6s ease 0.6s both;
+        }
+
+        .maintenance-glow {
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--blue-glow), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .maint-content h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .maint-price {
+            font-family: var(--font-mono);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--blue);
+            margin-bottom: 8px;
+        }
+
+        .maint-price-sub {
+            font-size: 0.9rem;
+            color: #4dea7b;
+            font-weight: 600;
+            margin-bottom: 24px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(77, 234, 123, 0.1);
+            padding: 4px 12px;
+            border-radius: 100px;
+        }
+
+        .maint-desc {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        /* Features List */
+        .maint-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .maint-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .maint-features li strong {
+            color: var(--text-primary);
+        }
+
+        .feat-icon {
+            color: var(--blue);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            transition: color 0.25s;
+            position: absolute;
+            top: 40px;
+            left: 24px;
+            z-index: 10;
+        }
+
+        .back-link:hover {
+            color: var(--blue);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .maintenance-wrapper {
+                grid-template-columns: 1fr;
+                padding: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .pricing-table-wrapper {
+                overflow-x: auto;
+            }
+
+            .pricing-table {
+                min-width: 700px;
+            }
+
+            .back-link {
+                top: 20px;
+            }
+        }
+    </style>
+    <!-- Analytics -->
+    <script defer src="https://solitary-wildflower-fea9.aman0arc.workers.dev/"></script>
+</head>
+
+<body>
+
+    <!-- ─── CURSOR GLOW ─── -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- ─── NOISE OVERLAY ─── -->
+    <div class="noise-overlay"></div>
+
+    <!-- ─── NAVIGATION ─── -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a class="nav-logo" href="index.html">
+                <span class="logo-bracket">&lt;</span>KA<span class="logo-bracket">/&gt;</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                <li><a href="pay.html" class="nav-link">Billing</a></li>
+            </ul>
+            <button class="nav-burger" id="navBurger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ─── PAGE HERO ─── -->
+    <header class="pricing-hero">
+        <div class="hero-grid-bg"></div>
+        <div class="hero-orbs">
+            <div class="orb orb-1"></div>
+        </div>
+        <div class="container" style="position:relative;z-index:2;width:100%;">
+            <a href="index.html" class="back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+                Back
+            </a>
+
+            <p class="pricing-eyebrow">// investment</p>
+            <h1 class="pricing-heading">
+                Plans & <span class="accent">Pricing.</span>
+            </h1>
+            <p class="pricing-sub" style="margin: 0 auto;">
+                Transparent pricing for high-performance websites. Delivered in 2 weeks with clean, scalable code.
+            </p>
+        </div>
+    </header>
+
+    <!-- ─── PRICING TABLES ─── -->
+    <main class="pricing-section">
+        <div class="container">
+
+            <div class="section-label">
+                <span class="label-line"></span>
+                <span class="label-text">// Web_Builds (One-Time)</span>
+            </div>
+
+            <div class="pricing-table-wrapper">
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>Package</th>
+                            <th>Ideal For</th>
+                            <th>Starting At</th>
+                            <th>Features</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Starter -->
+                        <tr>
+                            <td class="col-pkg">Starter Portfolio</td>
+                            <td class="col-ideal">Freelancers / Students</td>
+                            <td class="col-price">
+                                <span class="price-prefix">One-time payment</span>
+                                ₹12,000
+                            </td>
+                            <td class="col-features">Single-page layout, 2-week delivery, Mobile-responsive, Social
+                                integrations.</td>
+                        </tr>
+                        <!-- Business -->
+                        <tr>
+                            <td class="col-pkg">Business Growth</td>
+                            <td class="col-ideal">Local Shops / Services</td>
+                            <td class="col-price">
+                                <span class="price-prefix">One-time payment</span>
+                                ₹25,000
+                            </td>
+                            <td class="col-features">5-page site, Contact forms integration, Google Maps, Basic On-page
+                                SEO.</td>
+                        </tr>
+                        <!-- Custom -->
+                        <tr>
+                            <td class="col-pkg">Custom Pro</td>
+                            <td class="col-ideal">Startups / Scale-ups</td>
+                            <td class="col-price">
+                                <span class="price-prefix">Starting from</span>
+                                ₹45,000+
+                            </td>
+                            <td class="col-features">Custom API logic, Multi-page architecture, Advanced SEO setups,
+                                Admin Dashboard.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p
+                style="margin-top: 24px; font-size: 0.9rem; color: var(--text-muted); text-align: center; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+                <strong>Please note:</strong> Prices are negotiable. The packages above represent starting prices. Final
+                quotes are fully customized and may vary depending on your specific business requirements, additional
+                features, and the overall scope of the project.
+            </p>
+
+            <!-- Maintenance Sub -->
+            <div class="section-label" style="margin-top: 40px;">
+                <span class="label-line"></span>
+                <span class="label-text">// Peace_of_Mind (Recurring)</span>
+            </div>
+
+            <div class="maintenance-wrapper">
+                <div class="maintenance-glow"></div>
+
+                <div class="maint-content">
+                    <h2>Website Maintenance</h2>
+                    <div class="maint-price">₹1,500 <span style="font-size:0.5em;color:var(--text-muted)">/ month</span>
+                    </div>
+                    <div class="maint-price-sub">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <path d="M20 6L9 17l-5-5" />
+                        </svg>
+                        Or ₹15,000 / year (2 months free)
+                    </div>
+
+                    <p class="maint-desc">
+                        Keep your website fast, secure, and up-to-date without lifting a finger. Professional hosting
+                        and management included.
+                    </p>
+
+                    <a href="mailto:aman9clean@gmail.com?subject=Inquiry:%20Website%20Maintenance"
+                        class="btn btn-primary">
+                        Subscribe Now
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="maint-features-list">
+                    <ul class="maint-features">
+                        <li>
+                            <svg class="feat-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9V7m5 4V7" />
+                            </svg>
+                            <span><strong>Hosting Management:</strong> Site hosted on Cloudflare’s global edge network
+                                for blazing fast speeds.</span>
+                        </li>
+                        <li>
+                            <svg class="feat-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg>
+                            <span><strong>Security:</strong> Enterprise-grade SSL certificate, Web Application Firewall
+                                (WAF), and DDoS protection.</span>
+                        </li>
+                        <li>
+                            <svg class="feat-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="17 8 12 3 7 8" />
+                                <line x1="12" y1="3" x2="12" y2="15" />
+                            </svg>
+                            <span><strong>Backup:</strong> Weekly off-site backups of all data to ensure you never lose
+                                the site.</span>
+                        </li>
+                        <li>
+                            <svg class="feat-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                            </svg>
+                            <span><strong>Small Updates:</strong> Up to 2 hours of content updates per month (changing
+                                text/photos).</span>
+                        </li>
+                        <li>
+                            <svg class="feat-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <line x1="16" y1="13" x2="8" y2="13" />
+                                <line x1="16" y1="17" x2="8" y2="17" />
+                                <polyline points="10 9 9 9 8 9" />
+                            </svg>
+                            <span><strong>Monthly Report:</strong> A simple PDF sent monthly showing how many people
+                                visited your site.</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ─── QUOTES ─── -->
+    <section class="section section-alt quotes-section" style="padding-top: 40px; padding-bottom: 80px;" id="quotes">
+        <div class="container">
+            <div class="quote-display" id="quoteDisplay"
+                style="border:none; box-shadow:none; background:transparent; padding:0;">
+                <h2 class="section-title centered" style="margin-bottom: 15px;">Ready to elevate your business?</h2>
+                <div style="display: flex; justify-content: center; margin-top: 20px;">
+                    <a href="mailto:aman9clean@gmail.com" class="btn btn-primary"
+                        style="padding: 14px 32px; font-size: 1rem;">
+                        Let's Talk
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FOOTER ─── -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-logo">
+                <span class="logo-bracket">&lt;</span>KA<span class="logo-bracket">/&gt;</span>
+            </div>
+            <p class="footer-copy">© 2026 Kumar Aman. All rights reserved. Crafted with precision &amp; passion.</p>
+            <a href="mailto:aman9clean@gmail.com" class="btn btn-primary btn-sm footer-hire">Hire Me</a>
+        </div>
+    </footer>
+
+    <!-- ─── THEME TOGGLE ─── -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
