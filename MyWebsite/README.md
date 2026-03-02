@@ -1,8 +1,8 @@
 # Kumar Aman — Portfolio Website
 
-Personal portfolio website for **Kumar Aman**, a web developer specialising in portfolio and small-business websites.
+Personal portfolio and service platform for **Kumar Aman**, a developer focused on building high-performance, aesthetically stunning websites for small businesses. Features a custom design system, integrated billing, and SEO-first architecture.
 
-🌐 **Status:** Pending Deployment (Coming soon to Cloudflare Pages)
+🌐 **Live Demo:** [solitary-wildflower-fea9.aman0arc.workers.dev](https://solitary-wildflower-fea9.aman0arc.workers.dev/)
 
 ---
 
@@ -30,17 +30,23 @@ Personal portfolio website for **Kumar Aman**, a web developer specialising in p
 ## Project Structure
 
 ```
-client/
-├── index.html
-├── style.css
-├── script.js
-├── robots.txt
-├── sitemap.xml
-├── site.webmanifest
-├── pay.html
-├── success.html
-├── worker.js
-└── assets/
+.
+├── client/                 # Frontend Website
+│   ├── index.html          # Homepage
+│   ├── about.html          # Experience & About
+│   ├── pricing.html        # Services & Packages
+│   ├── pay.html            # Client Payment Portal
+│   ├── assets/             # Structured Assets
+│   │   ├── css/            # Stylesheets (style.css)
+│   │   ├── js/             # Interactive Logic (script.js)
+│   │   ├── icons/          # Favicons & Brand Icons
+│   │   └── images/         # Project & Profile Photos
+│   ├── sitemap.xml
+│   ├── robots.txt
+│   └── site.webmanifest
+├── server/                 # Backend Worker
+│   └── payment-worker.js   # Razorpay Integration logic
+└── README.md
 ```
 
 ## Local Development
@@ -65,8 +71,8 @@ This project is architected to be deployed seamlessly on **Cloudflare Pages**.
 3. Set the Framework preset to **None** and the output directory to `client`.
 4. The site will automatically build and deploy.
 
-**Payment Portal Backend (`worker.js`)**
-If utilizing the `pay.html` checkout functionality, deploy the `worker.js` script to **Cloudflare Workers** and paste the resulting Worker URL into the configuration block inside `pay.html`.
+**Payment Portal Backend (`server/payment-worker.js`)**
+If utilizing the `pay.html` checkout functionality, deploy the `payment-worker.js` script to **Cloudflare Workers** and update the `workerUrl` configuration block inside `pay.html` with your production endpoint.
 
 ## Services Offered
 
