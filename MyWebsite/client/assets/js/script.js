@@ -226,6 +226,15 @@ document.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('mouseleave', () => { card.style.transform = ''; });
 });
 
+/* ── CLICKABLE PROJECT CARDS ─────────────────── */
+document.querySelectorAll('.clickable-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+        if (e.target.closest('a') || e.target.closest('button')) return;
+        const url = card.dataset.url;
+        if (url) window.open(url, '_blank');
+    });
+});
+
 /* ── SKILL CAT HOVER GLOW ────────────────────── */
 document.querySelectorAll('.skill-cat').forEach(cat => {
     cat.addEventListener('mousemove', (e) => {

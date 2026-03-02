@@ -24,11 +24,11 @@ export default {
                 // This maps allowed Client IDs to specific order amounts in paise (INR) or cents (USD)
                 // e.g. 150000 paise = 1500 INR. This acts as both the identifier and the complex password.
                 const paymentDatabase = {
-                    "SECURE-1.5K-H8J2C5T9": { amount: 150000, currency: "INR", receipt: "rcpt_1500" },   // 1,500 INR
-                    "SECURE-8K-L9X2R5W1": { amount: 800000, currency: "INR", receipt: "rcpt_8000" },   // 8,000 INR
-                    "SECURE-10K-A7V3Q8M9": { amount: 1000000, currency: "INR", receipt: "rcpt_10000" }, // 10,000 INR
-                    "SECURE-12K-P4N6Y1B2": { amount: 1200000, currency: "INR", receipt: "rcpt_12000" }, // 12,000 INR
-                    "SECURE-15K-Z3M7F4D6": { amount: 1500000, currency: "INR", receipt: "rcpt_15000" }  // 15,000 INR
+                    "SECURE-1.5K-H8J2C5T9": { amount: 4500, currency: "INR", receipt: "rcpt_4500" },
+                    "SECURE-8K-L9X2R5W1": { amount: 9000, currency: "INR", receipt: "rcpt_9000" },
+                    "SECURE-10K-A7V3Q8M9": { amount: 3500, currency: "INR", receipt: "rcpt_3500" },
+                    "SECURE-12K-P4N6Y1B2": { amount: 4000, currency: "INR", receipt: "rcpt_4000" },
+                    "SECURE-15K-Z3M7F4D6": { amount: 5000, currency: "INR", receipt: "rcpt_5000" }
                 };
 
                 // Helper function to send JSON responses

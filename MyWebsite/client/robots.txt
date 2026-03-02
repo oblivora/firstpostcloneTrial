@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://amanarcportfolio.online/sitemap.xml
+Sitemap: https://solitary-wildflower-fea9.aman0arc.workers.dev/sitemap.xml

@@ -13,22 +13,23 @@
     <meta name="robots" content="index, follow" />
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://YOUR_DOMAIN/about.html" />
+    <link rel="canonical" href="https://solitary-wildflower-fea9.aman0arc.workers.dev/about.html" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://YOUR_DOMAIN/about.html" />
+    <meta property="og:url" content="https://solitary-wildflower-fea9.aman0arc.workers.dev/about.html" />
     <meta property="og:title" content="About Me | Kumar Aman — Web Developer" />
     <meta property="og:description"
         content="Web Developer dedicated to helping small businesses establish a high-impact digital presence." />
-    <meta property="og:image" content="https://YOUR_DOMAIN/assets/profile.jpeg" />
+    <meta property="og:image"
+        content="https://solitary-wildflower-fea9.aman0arc.workers.dev/assets/images/profile.jpeg" />
 
     <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -37,7 +38,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
         rel="stylesheet" />
 
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
 
     <style>
         /* ── ABOUT PAGE EXTRA STYLES ─────────────────────────── */
@@ -486,12 +487,15 @@
             </a>
             <p class="about-page-eyebrow">// about_me</p>
             <h1 class="about-page-heading">
-                The Developer Behind<br />
-                <span class="accent">The Code.</span>
+                About Me<br />
+                <span class="accent">The Developer.</span>
             </h1>
             <p class="about-page-sub">
-                Helping small businesses and individuals turn big ideas into powerful, live websites — delivered in two
-                weeks.
+                I'm a Web Developer dedicated to helping small businesses and individuals establish a high-impact
+                digital
+                presence. I specialize in building sleek, functional websites that don't just look good but actually
+                work
+                for your goals — whether that's landing a new job or growing your customer base.
             </p>
         </div>
     </header>
@@ -592,7 +596,7 @@
                     <!-- Profile Card -->
                     <div class="sidebar-card sidebar-profile">
                         <div class="sidebar-avatar">
-                            <img src="assets/profile.jpeg" alt="Kumar Aman" />
+                            <img src="assets/images/profile.jpeg" alt="Kumar Aman" />
                         </div>
                         <p class="sidebar-name">Kumar Aman</p>
                         <p class="sidebar-role">Web Developer</p>
@@ -668,11 +672,23 @@
 
     <!-- ─── FOOTER ─── -->
     <footer class="footer">
-        <div class="container footer-inner">
+        <div class="container footer-inner" style="flex-direction: column; gap: 24px; padding: 40px 0;">
             <div class="footer-logo">
                 <span class="logo-bracket">&lt;</span>KA<span class="logo-bracket">/&gt;</span>
             </div>
-            <p class="footer-copy">© 2026 Kumar Aman. All rights reserved. Crafted with precision &amp; passion.</p>
+            <div class="footer-nav" style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+                <a href="index.html" class="nav-link" style="font-size: 0.85rem; color: var(--text-secondary);">Home</a>
+                <a href="about.html" class="nav-link"
+                    style="font-size: 0.85rem; color: var(--text-secondary);">About</a>
+                <a href="pricing.html" class="nav-link"
+                    style="font-size: 0.85rem; color: var(--text-secondary);">Pricing</a>
+                <a href="terms.html" class="nav-link"
+                    style="font-size: 0.85rem; color: var(--text-secondary);">Terms</a>
+                <a href="privacy.html" class="nav-link"
+                    style="font-size: 0.85rem; color: var(--text-secondary);">Privacy</a>
+            </div>
+            <p class="footer-copy" style="margin: 0;">© 2026 Kumar Aman. All rights reserved. Crafted with precision
+                &amp; passion.</p>
             <a href="mailto:aman9clean@gmail.com" class="btn btn-primary btn-sm footer-hire">Hire Me</a>
         </div>
     </footer>
@@ -697,7 +713,7 @@
         </svg>
     </button>
 
-    <script src="script.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>

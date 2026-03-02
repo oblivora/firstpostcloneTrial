@@ -891,6 +891,10 @@ ul {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), var(--shadow-blue);
 }
 
+.project-card.clickable-card {
+    cursor: pointer;
+}
+
 .project-card:hover::before {
     opacity: 1;
 }

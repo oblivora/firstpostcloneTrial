@@ -12,26 +12,28 @@
     <meta name="author" content="Kumar Aman" />
     <meta name="robots" content="index, follow" />
 
-    <!-- Canonical — replace YOUR_DOMAIN with your actual domain once purchased -->
-    <link rel="canonical" href="https://YOUR_DOMAIN/" />
+    <!-- Canonical -->
+    <link rel="canonical" href="https://solitary-wildflower-fea9.aman0arc.workers.dev/" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://YOUR_DOMAIN/" />
+    <meta property="og:url" content="https://solitary-wildflower-fea9.aman0arc.workers.dev/" />
     <meta property="og:title" content="Kumar Aman | Web Developer" />
     <meta property="og:description"
         content="Portfolio &amp; small-business websites built with precision. Let's work together." />
-    <meta property="og:image" content="https://YOUR_DOMAIN/assets/profile.jpeg" />
+    <meta property="og:image"
+        content="https://solitary-wildflower-fea9.aman0arc.workers.dev/assets/images/profile.jpeg" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@ViranovaLabs" />
     <meta name="twitter:title" content="Kumar Aman | Web Developer" />
     <meta name="twitter:description" content="Portfolio &amp; small-business websites built with precision." />
-    <meta name="twitter:image" content="https://YOUR_DOMAIN/assets/profile.jpeg" />
+    <meta name="twitter:image"
+        content="https://solitary-wildflower-fea9.aman0arc.workers.dev/assets/images/profile.jpeg" />
 
     <!-- Favicon (add your own favicon.ico / apple-touch-icon to client/) -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -40,11 +42,11 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
         rel="stylesheet" />
 
-    <link rel="stylesheet" href="style.css" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WVGKJJM9EP"></script>
     <script>
@@ -71,7 +73,7 @@
                 <span class="logo-bracket">&lt;</span>KA<span class="logo-bracket">/&gt;</span>
             </a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
                 <li><a href="pricing.html" class="nav-link">Pricing</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
 
@@ -151,21 +153,21 @@
         <div class="container">
             <div class="section-label">
                 <span class="label-line"></span>
-                <span class="label-text">// about_me</span>
+                <span class="label-text">// services & pricing</span>
             </div>
             <div class="about-grid">
                 <div class="about-left" data-reveal>
                     <div class="avatar-wrapper">
                         <div class="avatar-ring"></div>
                         <div class="avatar-inner">
-                            <img src="assets/profile.jpeg" alt="Kumar Aman" class="profile-img" />
+                            <img src="assets/images/profile.jpeg" alt="Kumar Aman" class="profile-img" />
                         </div>
                         <div class="avatar-badge">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                                 <path
                                     d="M12 2L14.09 8.26L21 9.27L16 14.14L17.18 21.02L12 17.77L6.82 21.02L8 14.14L3 9.27L9.91 8.26L12 2Z" />
                             </svg>
-                            Top Developer
+
                         </div>
                     </div>
                 </div>
@@ -322,7 +324,8 @@
             <div class="projects-grid">
 
                 <!-- ── PROJECT 01 ─────────────────────────────────────────────── -->
-                <div class="project-card featured" data-reveal>
+                <div class="project-card featured clickable-card" data-reveal
+                    data-url="https://webanalytics-frontend.aman0arc.workers.dev/">
                     <div class="project-header">
                         <div class="project-num">01</div>
                         <div class="project-links">
@@ -333,7 +336,8 @@
                                     <polyline points="8 6 2 12 8 18" />
                                 </svg>
                             </a>
-                            <a href="#" class="icon-link" aria-label="Live demo">
+                            <a href="https://webanalytics-frontend.aman0arc.workers.dev/" target="_blank"
+                                rel="noopener noreferrer" class="icon-link" aria-label="Live demo">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2">
                                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
@@ -346,7 +350,7 @@
                     <div class="project-visual">
                         <div class="browser-bar">
                             <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-                            <span class="url-bar">analytics-dashboard.dev</span>
+                            <span class="url-bar">webanalytics-frontend.aman0arc.workers.dev</span>
                         </div>
                         <div class="project-mockup">
                             <div class="mock-nav"></div>
@@ -362,12 +366,7 @@
                     <p class="project-desc">A fully functional, deployable Google Analytics alternative — featuring
                         real-time visitor tracking, session analytics, bounce rates, traffic source breakdowns, and
                         an interactive dashboard with live charts.</p>
-                    <div class="project-tech">
-                        <span class="tech-chip">Next.js</span>
-                        <span class="tech-chip">Node.js</span>
-                        <span class="tech-chip">MongoDB</span>
-                        <span class="tech-chip">Chart.js</span>
-                    </div>
+
                 </div>
 
                 <!-- ── ADD FUTURE PROJECTS BELOW ──────────────────────────────────
@@ -378,7 +377,7 @@
                 <!--
                 PROJECT SLOT 02 — uncomment when ready.
 
-                <div class="project-card" data-reveal>
+                <div class="project-card clickable-card" data-reveal data-url="LIVE_LINK">
                     <div class="project-header">
                         <div class="project-num">02</div>
                         <div class="project-links">
@@ -395,6 +394,21 @@
                             </a>
                         </div>
                     </div>
+                    <div class="project-visual">
+                        <div class="browser-bar">
+                            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+                            <span class="url-bar">solitary-wildflower-fea9.aman0arc.workers.dev</span>
+                        </div>
+                        <div class="project-mockup">
+                            <div class="mock-nav"></div>
+                            <div class="mock-hero"></div>
+                            <div class="mock-cards">
+                                <div class="mock-card"></div>
+                                <div class="mock-card"></div>
+                                <div class="mock-card"></div>
+                            </div>
+                        </div>
+                    </div>
                     <h3 class="project-title">Project Title</h3>
                     <p class="project-desc">Short description of what the project does and the problem it solves.</p>
                     <div class="project-tech">
@@ -408,7 +422,7 @@
                 <!--
                 PROJECT SLOT 03 — uncomment when ready.
 
-                <div class="project-card" data-reveal>
+                <div class="project-card clickable-card" data-reveal data-url="LIVE_LINK">
                     <div class="project-header">
                         <div class="project-num">03</div>
                         <div class="project-links">
@@ -423,6 +437,21 @@
                                     <polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" />
                                 </svg>
                             </a>
+                        </div>
+                    </div>
+                    <div class="project-visual">
+                        <div class="browser-bar">
+                            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+                            <span class="url-bar">solitary-wildflower-fea9.aman0arc.workers.dev</span>
+                        </div>
+                        <div class="project-mockup">
+                            <div class="mock-nav"></div>
+                            <div class="mock-hero"></div>
+                            <div class="mock-cards">
+                                <div class="mock-card"></div>
+                                <div class="mock-card"></div>
+                                <div class="mock-card"></div>
+                            </div>
                         </div>
                     </div>
                     <h3 class="project-title">Project Title</h3>
@@ -622,15 +651,24 @@
 
     <!-- ─── FOOTER ─── -->
     <footer class="footer">
-        <div class="container footer-inner">
+        <div class="container footer-inner" style="flex-direction: column; gap: 24px; padding: 40px 0;">
             <div class="footer-logo">
                 <span class="logo-bracket">&lt;</span>KA<span class="logo-bracket">/&gt;</span>
             </div>
-            <p class="footer-copy">© 2026 Kumar Aman. All rights reserved. Crafted with precision &amp; passion.</p>
+            <div class="footer-nav" style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+                <a href="index.html" class="nav-link" style="font-size: 0.85rem; color: var(--text-secondary);">Home</a>
+                <a href="about.html" class="nav-link"
+                    style="font-size: 0.85rem; color: var(--text-secondary);">About</a>
+                <a href="pricing.html" class="nav-link"
+                    style="font-size: 0.85rem; color: var(--text-secondary);">Pricing</a>
+                <a href="terms.html" class="nav-link"
+                    style="font-size: 0.85rem; color: var(--text-secondary);">Terms</a>
+                <a href="privacy.html" class="nav-link"
+                    style="font-size: 0.85rem; color: var(--text-secondary);">Privacy</a>
+            </div>
+            <p class="footer-copy" style="margin: 0;">© 2026 Kumar Aman. All rights reserved. Crafted with precision
+                &amp; passion.</p>
             <a href="#contact" class="btn btn-primary btn-sm footer-hire">Hire Me</a>
-        </div>
-        <div class="footer-terms-container">
-            <a href="terms.html" class="footer-terms">Terms & Conditions</a>
         </div>
     </footer>
 
@@ -657,7 +695,7 @@
 
 
 
-    <script src="script.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>
