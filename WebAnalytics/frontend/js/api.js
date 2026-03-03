@@ -3,7 +3,10 @@
  * All API calls go through here; credentials (cookies) are always included.
  */
 
-const API_BASE = '';  // Same origin — Express serves both
+// For local development (Express serves the frontend):
+// const API_BASE = ''; 
+// For production (Frontend on Cloudflare, Backend on Render):
+const API_BASE = 'https://webanalytic-api.onrender.com'; // <-- RENDER URL
 
 async function apiFetch(path, options = {}) {
     const res = await fetch(`${API_BASE}${path}`, {
@@ -37,7 +40,7 @@ const api = {
 
     // Google OAuth — redirect-based, not fetch
     connectGoogle: (siteId) => {
-        window.location.href = `/api/google/connect?siteId=${siteId}`;
+        window.location.href = `${API_BASE}/api/google/connect?siteId=${siteId}`;
     },
 
     // Analytics

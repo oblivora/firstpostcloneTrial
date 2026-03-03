@@ -1,29 +1,26 @@
-const Database = require('better-sqlite3');
+const { Pool } = require('pg');
 const path = require('path');
 const fs = require('fs');
 
-const DB_PATH = path.join(__dirname, 'analytics.db');
+let pool;
 
-let db; // single shared instance
+async function initDb() {
+    if (pool) return pool;
 
-function initDb() {
-    if (db) return Promise.resolve(db);
-
-    db = new Database(DB_PATH);
-
-    // Enable WAL for better concurrent read performance
-    db.pragma('journal_mode = WAL');
+    pool = new Pool({
+        connectionString: process.env.DATABASE_URL,
+    });
 
     // Run schema (CREATE TABLE IF NOT EXISTS is idempotent)
     const schema = fs.readFileSync(path.join(__dirname, 'schema.sql'), 'utf8');
-    db.exec(schema);
+    await pool.query(schema);
 
-    return Promise.resolve(db);
+    return pool;
 }
 
 function getDb() {
-    if (!db) throw new Error('Database not initialized. Call initDb() first.');
-    return db;
+    if (!pool) throw new Error('Database not initialized. Call initDb() first.');
+    return pool;
 }
 
 module.exports = { initDb, getDb };

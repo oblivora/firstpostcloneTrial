@@ -7,8 +7,8 @@ const authMiddleware = require('../middleware/authMiddleware');
 
 const COOKIE_OPTS = {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
+    secure: true, // Required for cross-origin cookies (SameSite=none)
+    sameSite: 'none', // Required because Render and Cloudflare Pages are on different domains
     maxAge: 7 * 24 * 60 * 60 * 1000,
 };
 
@@ -27,17 +27,18 @@ router.post('/register', async (req, res) => {
     try {
         const db = getDb();
         const hash = await bcrypt.hash(password, 12);
-        const result = db.prepare(
-            'INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)'
-        ).run(name.trim(), email.toLowerCase().trim(), hash);
+        const result = await db.query(
+            'INSERT INTO users (name, email, password_hash) VALUES ($1, $2, $3) RETURNING id',
+            [name.trim(), email.toLowerCase().trim(), hash]
+        );
 
-        const user = { id: result.lastInsertRowid, email: email.toLowerCase().trim() };
+        const user = { id: result.rows[0].id, email: email.toLowerCase().trim() };
         const token = signToken(user);
         res.cookie('token', token, COOKIE_OPTS)
             .status(201)
             .json({ user: { id: user.id, name: name.trim(), email: user.email } });
     } catch (e) {
-        if (e.message && e.message.includes('UNIQUE'))
+        if (e.code === '23505' || (e.message && e.message.includes('UNIQUE')))
             return res.status(409).json({ error: 'An account with this email already exists' });
         console.error('Register error:', e);
         res.status(500).json({ error: 'Server error' });
@@ -51,7 +52,9 @@ router.post('/login', async (req, res) => {
         return res.status(400).json({ error: 'Email and password required' });
 
     const db = getDb();
-    const user = db.prepare('SELECT * FROM users WHERE email = ?').get(email.toLowerCase().trim());
+    const result = await db.query('SELECT * FROM users WHERE email = $1', [email.toLowerCase().trim()]);
+    const user = result.rows[0];
+
     if (!user) return res.status(401).json({ error: 'Invalid email or password' });
 
     const valid = await bcrypt.compare(password, user.password_hash);
@@ -68,9 +71,11 @@ router.post('/logout', (req, res) => {
 });
 
 // GET /api/auth/me
-router.get('/me', authMiddleware, (req, res) => {
+router.get('/me', authMiddleware, async (req, res) => {
     const db = getDb();
-    const user = db.prepare('SELECT id, name, email, created_at FROM users WHERE id = ?').get(req.user.id);
+    const result = await db.query('SELECT id, name, email, created_at FROM users WHERE id = $1', [req.user.id]);
+    const user = result.rows[0];
+
     if (!user) return res.status(404).json({ error: 'User not found' });
     res.json(user);
 });

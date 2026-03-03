@@ -9,7 +9,8 @@ router.use(authMiddleware);
 
 async function getAnalyticsClient(siteId, userId) {
     const db = getDb();
-    const site = db.prepare('SELECT * FROM websites WHERE id = ? AND user_id = ?').get(siteId, userId);
+    const result = await db.query('SELECT * FROM websites WHERE id = $1 AND user_id = $2', [siteId, userId]);
+    const site = result.rows[0];
 
     if (!site) throw Object.assign(new Error('Website not found'), { status: 404 });
     if (!site.connected || !site.google_refresh_token)

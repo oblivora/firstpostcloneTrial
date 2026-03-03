@@ -13,12 +13,13 @@ function getOAuth2Client() {
 }
 
 // GET /api/google/connect?siteId=<id>
-router.get('/connect', authMiddleware, (req, res) => {
+router.get('/connect', authMiddleware, async (req, res) => {
     const { siteId } = req.query;
     if (!siteId) return res.status(400).json({ error: 'siteId required' });
 
     const db = getDb();
-    const site = db.prepare('SELECT id FROM websites WHERE id = ? AND user_id = ?').get(siteId, req.user.id);
+    const result = await db.query('SELECT id FROM websites WHERE id = $1 AND user_id = $2', [siteId, req.user.id]);
+    const site = result.rows[0];
     if (!site) return res.status(404).json({ error: 'Website not found' });
 
     const oauth2Client = getOAuth2Client();
@@ -63,9 +64,10 @@ router.get('/callback', async (req, res) => {
         const { data: googleUser } = await oauth2Info.userinfo.get();
 
         const db = getDb();
-        db.prepare(
-            `UPDATE websites SET google_refresh_token = ?, google_email = ?, connected = 1 WHERE id = ? AND user_id = ?`
-        ).run(tokens.refresh_token, googleUser.email, siteId, userId);
+        await db.query(
+            `UPDATE websites SET google_refresh_token = $1, google_email = $2, connected = 1 WHERE id = $3 AND user_id = $4`,
+            [tokens.refresh_token, googleUser.email, siteId, userId]
+        );
 
         res.redirect(`${process.env.FRONTEND_URL}/dashboard.html?connected=true&siteId=${siteId}`);
     } catch (e) {

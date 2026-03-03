@@ -5,38 +5,41 @@ const authMiddleware = require('../middleware/authMiddleware');
 
 router.use(authMiddleware);
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
     const db = getDb();
-    const sites = db.prepare(
+    const result = await db.query(
         `SELECT id, display_name, ga_property_id, google_email, connected, created_at
-     FROM websites WHERE user_id = ? ORDER BY created_at DESC`
-    ).all(req.user.id);
-    res.json(sites);
+     FROM websites WHERE user_id = $1 ORDER BY created_at DESC`,
+        [req.user.id]
+    );
+    res.json(result.rows);
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     const { display_name, ga_property_id } = req.body;
     if (!ga_property_id) return res.status(400).json({ error: 'GA4 Property ID is required' });
     const db = getDb();
-    const result = db.prepare(
-        'INSERT INTO websites (user_id, display_name, ga_property_id) VALUES (?, ?, ?)'
-    ).run(req.user.id, (display_name || 'My Website').trim(), ga_property_id.trim());
-    res.status(201).json({ id: result.lastInsertRowid });
+    const result = await db.query(
+        'INSERT INTO websites (user_id, display_name, ga_property_id) VALUES ($1, $2, $3) RETURNING id',
+        [req.user.id, (display_name || 'My Website').trim(), ga_property_id.trim()]
+    );
+    res.status(201).json({ id: result.rows[0].id });
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
     const { display_name, ga_property_id } = req.body;
     const db = getDb();
-    db.prepare(
-        `UPDATE websites SET display_name = COALESCE(?, display_name),
-     ga_property_id = COALESCE(?, ga_property_id) WHERE id = ? AND user_id = ?`
-    ).run(display_name, ga_property_id, req.params.id, req.user.id);
+    await db.query(
+        `UPDATE websites SET display_name = COALESCE($1, display_name),
+     ga_property_id = COALESCE($2, ga_property_id) WHERE id = $3 AND user_id = $4`,
+        [display_name, ga_property_id, req.params.id, req.user.id]
+    );
     res.json({ ok: true });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
     const db = getDb();
-    db.prepare('DELETE FROM websites WHERE id = ? AND user_id = ?').run(req.params.id, req.user.id);
+    await db.query('DELETE FROM websites WHERE id = $1 AND user_id = $2', [req.params.id, req.user.id]);
     res.json({ ok: true });
 });
 
