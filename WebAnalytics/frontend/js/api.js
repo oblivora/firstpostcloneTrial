@@ -6,7 +6,7 @@
 // For local development (Express serves the frontend):
 // const API_BASE = ''; 
 // For production (Frontend on Cloudflare, Backend on Render):
-const API_BASE = 'https://webanalytic-api.onrender.com'; // <-- RENDER URL
+const API_BASE = 'https://webanalyticsbackend.onrender.com'; // <-- RENDER URL
 
 async function apiFetch(path, options = {}) {
     const res = await fetch(`${API_BASE}${path}`, {

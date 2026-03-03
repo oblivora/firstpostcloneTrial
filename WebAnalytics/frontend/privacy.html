@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy - WebAnalytic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+        .page-wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--bg-main);
+        }
+
+        .content-container {
+            flex: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 24px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .content-container h1 {
+            color: var(--text-primary);
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .content-container h2 {
+            color: var(--text-primary);
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 16px;
+        }
+
+        .content-container p {
+            margin-bottom: 16px;
+            font-size: 15px;
+        }
+
+        .content-container ul {
+            margin-bottom: 16px;
+            padding-left: 24px;
+            font-size: 15px;
+        }
+
+        .content-container li {
+            margin-bottom: 8px;
+        }
+
+        /* Nav */
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 60px;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(7, 9, 15, 0.85);
+            backdrop-filter: blur(12px);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .nav-logo-icon {
+            width: 34px;
+            height: 34px;
+            background: var(--accent);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .nav-logo-text {
+            font-size: 17px;
+            font-weight: 800;
+            letter-spacing: -0.4px;
+        }
+
+        .nav-logo-text span {
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 28px 60px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 13px;
+            color: var(--text-muted);
+            background: rgba(7, 9, 15, 0.85);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 768px) {
+
+            .nav,
+            .footer {
+                padding: 16px 24px;
+            }
+
+            .footer {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <nav class="nav">
+            <a href="/index.html" class="nav-logo">
+                <div class="nav-logo-icon">
+                    <svg width="18" height="18" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                    </svg>
+                </div>
+                <span class="nav-logo-text">Web<span>Analytic</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="/login.html" class="btn btn-ghost btn-sm">Sign In</a>
+                <a href="/register.html" class="btn btn-primary btn-sm">Get Started</a>
+            </div>
+        </nav>
+
+        <main class="content-container">
+            <h1>Privacy Policy</h1>
+            <p>Last updated: March 3, 2026</p>
+
+            <p>At WebAnalytic, we take your privacy seriously. This Privacy Policy outlines the types of personal
+                information that is received and collected by WebAnalytic and how it is used.</p>
+
+            <h2>1. Information We Collect</h2>
+            <p>We may collect personal information such as your name, email address, and other contact details when you
+                register for an account. We also collect data from your connected Google Analytics accounts strictly for
+                the purpose of displaying it to you on our dashboard.</p>
+
+            <h2>2. How We Use Information</h2>
+            <p>The information we collect is used to:</p>
+            <ul>
+                <li>Provide, operate, and maintain our services.</li>
+                <li>Improve, personalize, and expand our platform.</li>
+                <li>Understand and analyze how you use our website.</li>
+                <li>Communicate with you for customer support and updates.</li>
+            </ul>
+
+            <h2>3. Third-Party Access (Google Analytics)</h2>
+            <p>WebAnalytic uses the Google Analytics Data API to display your website metrics in real-time. We only
+                request <strong>read-only</strong> access to your Google Analytics data. We do not store, modify, or
+                share your analytics data with any third parties or advertisers.</p>
+
+            <h2>4. Cookies and Web Beacons</h2>
+            <p>We use cookies to maintain your active session and provide an authenticated experience within the
+                dashboard. These are strictly necessary cookies to ensure the platform functions properly.</p>
+
+            <h2>5. Data Security</h2>
+            <p>We use administrative, technical, and physical security measures to help protect your personal
+                information. While we have taken reasonable steps to secure the personal information you provide to us,
+                please be aware that despite our efforts, no security measures are perfect or impenetrable.</p>
+
+            <h2>6. Changes to This Policy</h2>
+            <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new
+                Privacy Policy on this page.</p>
+
+            <h2>7. Contact Us</h2>
+            <p>If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at
+                support@webanalytic.com.</p>
+        </main>
+
+        <footer class="footer">
+            <div class="nav-logo">
+                <div class="nav-logo-icon" style="width:24px;height:24px">
+                    <svg width="12" height="12" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                    </svg>
+                </div>
+                <span class="nav-logo-text" style="font-size:13px;">Web<span
+                        style="color:var(--accent)">Analytic</span></span>
+            </div>
+            <span>© 2026 WebAnalytic. All rights reserved.</span>
+            <div class="footer-links">
+                <a href="/privacy.html">Privacy Policy</a>
+                <a href="/terms.html">Terms & Conditions</a>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
